@@ -29,6 +29,7 @@
   --font:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+[hidden]{display:none!important}
 html,body{height:100%}
 body{font-family:var(--font);background:var(--bg);color:var(--ink-900);font-size:14.5px;line-height:1.45;-webkit-font-smoothing:antialiased;overflow:hidden}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
@@ -399,7 +400,8 @@ h1,h2,h3,h4{line-height:1.25}
 .chart-card.s12{grid-column:span 12}
 .chart-title{font-size:13.5px;font-weight:800;margin-bottom:2px}
 .chart-sub{font-size:11.5px;color:var(--ink-400);margin-bottom:10px}
-.chart-box{position:relative;flex:1;min-height:230px}
+.chart-box{position:relative;flex:0 0 auto;height:230px;min-height:230px;max-height:230px}
+.chart-box>.empty{position:absolute;inset:0;justify-content:center;padding:16px;background:var(--card)}
 .chart-note{font-size:10.8px;color:var(--ink-400);margin-top:8px}
 
 /* ---------- Intervenciones ---------- */
@@ -561,7 +563,6 @@ h1,h2,h3,h4{line-height:1.25}
           <button id="btnFitResults" title="Ajustar la vista a los resultados filtrados" aria-label="Ajustar a resultados"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3"/></svg></button>
           <button id="btnCenterCity" title="Centrar el mapa en Las Toscas" aria-label="Centrar en Las Toscas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg></button>
           <button id="btnToggleLegend" title="Mostrar u ocultar la leyenda" aria-label="Mostrar u ocultar leyenda"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 6h13M8 12h13M8 18h13M3.5 6h.01M3.5 12h.01M3.5 18h.01"/></svg></button>
-          <button id="btnBasemap" title="Alternar cartografía base" aria-label="Alternar cartografía base"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/></svg></button>
         </div>
       </div>
       <div class="map-legend" id="mapLegend">
@@ -683,10 +684,10 @@ h1,h2,h3,h4{line-height:1.25}
     </div>
     <div class="notice-card amber">
       <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2.5 20h19L12 3z"/><path d="M12 10v4M12 17h.01"/></svg>
-      <div><b>¿Cómo se calculan las zonas?</b> Se agrupan los reportes del conjunto activo en grillas de unas 4 cuadras y se ordenan con reglas simples y transparentes: cantidad de reportes, pendientes, prioridad alta o crítica y antigüedad sin resolver. Los sectores mostrados son <b>etiquetas simuladas</b> de referencia; no constituyen una evaluación científica del riesgo ni una decisión automática de intervención, y la participación ciudadana puede ser desigual entre sectores.</div>
+      <div><b>¿Cómo se calculan las zonas?</b> Cada reporte del conjunto activo se asigna al barrio de Las Toscas más cercano según sus coordenadas y luego se ordena con reglas simples y transparentes: cantidad de reportes, pendientes, prioridad alta o crítica y antigüedad sin resolver. La lista reúne barrios mencionados en fuentes locales y en el RENABAP; las delimitaciones son <b>aproximadas</b> y no reemplazan la cartografía municipal. No constituyen una evaluación científica del riesgo ni una decisión automática de intervención, y la participación ciudadana puede ser desigual entre barrios.</div>
     </div>
     <div class="zones-grid" id="zonesGrid"></div>
-    <div class="empty" id="zonesEmpty" hidden><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.1-7-11a7 7 0 0 1 14 0c0 4.9-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg><strong>Sin zonas destacadas por ahora</strong><span>Se necesitan al menos 3 reportes en una misma área del conjunto activo para identificar concentraciones.</span></div>
+    <div class="empty" id="zonesEmpty" hidden><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.1-7-11a7 7 0 0 1 14 0c0 4.9-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg><strong>Sin zonas destacadas por ahora</strong><span>Se necesitan al menos 3 reportes en un mismo barrio del conjunto activo para identificar concentraciones.</span></div>
   </div>
 </section>
 
@@ -816,19 +817,45 @@ var CONFIG = {
   zoom: 14,
   storageKey: 'lt-mapa-ciudadano:reports:v1',
   prefsKey: 'lt-mapa-ciudadano:prefs:v1',
-  sectorCellDeg: 0.0024, /* ~260 m por celda para zonas prioritarias */
   /* URL del portal ciudadano existente.
      REEMPLAZAR este valor vacío por la dirección real del portal municipal
      (también puede cargarse desde Configuración; se guarda localmente).
      Mientras esté vacío, el botón muestra un aviso y no navega. */
-  citizenPortalUrl: '',
-  /* ── Clave de API de Stadia Maps (cartografía base Alidade Smooth) ──
-     ADVERTENCIA: al viajar dentro de un archivo de frontend, esta clave
-     queda visible para quien abra el código fuente o las herramientas del
-     navegador. Para producción: restringila por dominio en el panel de
-     Stadia Maps y/o servila desde un backend propio. Reemplazable aquí. */
-  stadiaApiKey: 'eyJhbGciOiJIUzI1NiJ9.eyJhIjoiYWNfaDY1dXUzNmYiLCJqdGkiOiI1NDM0MTY3MmY3YTJmOWU3MGEzYjk0NzQ5ZjE2NDJmNiJ9.S4WLh5jZjgPTXpy4BX3kQr1c2Esjv2BJFyShYJLx6HI'
+  citizenPortalUrl: ''
 };
+
+/* ---------------- Barrios de Las Toscas (referencia aproximada) ----------------
+   Centros usados para asignar cada reporte al barrio más cercano. Las
+   delimitaciones son aproximadas y no reemplazan la cartografía municipal. */
+var BARRIOS = [
+  {id:'centro', name:'Centro', lat:-28.3548, lng:-59.2590, span:0.0026},
+  {id:'fatima', name:'Barrio Fátima', lat:-28.3559, lng:-59.2595, span:0.0024},
+  {id:'virgen-nina', name:'Barrio Virgen Niña', lat:-28.3538, lng:-59.2583, span:0.0024},
+  {id:'san-felipe', name:'Barrio San Felipe', lat:-28.3575, lng:-59.2545, span:0.0026},
+  {id:'santa-lucia', name:'Barrio Santa Lucía', lat:-28.3615, lng:-59.2560, span:0.0028},
+  {id:'itati', name:'Barrio Itatí', lat:-28.3628, lng:-59.2627, span:0.0028},
+  {id:'asunta', name:'Barrio Asunta', lat:-28.3460, lng:-59.2620, span:0.0030},
+  {id:'virgen-salud', name:'Barrio Virgen de la Salud', lat:-28.3560, lng:-59.2693, span:0.0030},
+  {id:'quompi', name:'Barrio Quompí · Nalá - An añaxat', lat:-28.3255, lng:-59.2536, span:0.0032},
+  {id:'pueblo-nuevo', name:'Barrio Pueblo Nuevo', lat:-28.3582, lng:-59.2650, span:0.0030},
+  {id:'estacion', name:'Barrio Estación', lat:-28.3660, lng:-59.2578, span:0.0030},
+  {id:'ingenio', name:'Barrio Ingenio', lat:-28.3690, lng:-59.2585, span:0.0032},
+  {id:'juan-peron', name:'Barrio Juan Perón', lat:-28.3472, lng:-59.2678, span:0.0032},
+  {id:'san-agustin', name:'Barrio San Agustín', lat:-28.3480, lng:-59.2645, span:0.0030},
+  {id:'codeselt', name:'Barrio CODESELT', lat:-28.3539, lng:-59.2611, span:0.0024},
+  {id:'san-isidro-este', name:'Barrio San Isidro Este', lat:-28.3450, lng:-59.2520, span:0.0040},
+  {id:'san-isidro-oeste', name:'Barrio San Isidro Oeste', lat:-28.3495, lng:-59.2850, span:0.0040}
+];
+
+function nearestBarrio(lat, lng){
+  var best = null, bestDist = Infinity;
+  BARRIOS.forEach(function(b){
+    var dy = lat - b.lat, dx = (lng - b.lng) * Math.cos(lat * Math.PI / 180);
+    var d = dx * dx + dy * dy;
+    if(d < bestDist){ bestDist = d; best = b; }
+  });
+  return best;
+}
 
 /* ---------------- Taxonomía central (ampliable) ---------------- */
 var CATEGORIES = [
@@ -1133,13 +1160,13 @@ function buildDemoData(){
   function jitter(){ return (rnd() + rnd() + rnd() - 1.5) / 1.5; }
 
   var hotspots = [
-    {lat:-28.3521, lng:-59.2634, w:0.18, ref:'Sector céntrico (referencia simulada)'},
-    {lat:-28.3592, lng:-59.2561, w:0.15, ref:'Sector sur (referencia simulada)'},
-    {lat:-28.3495, lng:-59.2508, w:0.13, ref:'Sector este (referencia simulada)'},
-    {lat:-28.3467, lng:-59.2652, w:0.11, ref:'Sector norte (referencia simulada)'},
-    {lat:-28.3618, lng:-59.2660, w:0.09, ref:'Sector oeste (referencia simulada)'}
+    {lat:-28.3521, lng:-59.2634, w:0.18, ref:'Barrio Estación'},
+    {lat:-28.3592, lng:-59.2561, w:0.15, ref:'Barrio Santa Lucía'},
+    {lat:-28.3495, lng:-59.2508, w:0.13, ref:'Barrio San Isidro Este'},
+    {lat:-28.3467, lng:-59.2652, w:0.11, ref:'Barrio Juan Perón'},
+    {lat:-28.3618, lng:-59.2660, w:0.09, ref:'Barrio Pueblo Nuevo'}
   ];
-  var otherRefs = ['Zona de escuelas (simulada)','Zona comercial (simulada)','Ingreso a la ciudad (simulado)','Sector ribereño (simulado)','Zona deportiva (simulada)','Sector de demostración (simulado)'];
+  var otherRefs = BARRIOS.map(function(b){ return b.name; });
 
   var catPool = [];
   var w = {agua:13, calles:13, alumbrado:11, residuos:9, arbolado:7, senalizacion:6, infraestructura:5, ruidos:4, sugerencias:3, otros:1};
@@ -1169,9 +1196,10 @@ function buildDemoData(){
 
     var hs = null, r = rnd(), acc = 0;
     for(var h = 0; h < hotspots.length; h++){ acc += hotspots[h].w; if(r <= acc){ hs = hotspots[h]; break; } }
-    var ref = hs ? hs.ref : pick(otherRefs);
     var lat = (hs ? hs.lat : CONFIG.center[0] + (rnd() - 0.5) * 0.02) + jitter() * 0.0038;
     var lng = (hs ? hs.lng : CONFIG.center[1] + (rnd() - 0.5) * 0.026) + jitter() * 0.0045;
+    var barrio = nearestBarrio(lat, lng);
+    var ref = barrio ? barrio.name : pick(otherRefs);
 
     var flow = FLOW.slice(0, FLOW.indexOf(status) + 1);
     if(status === 'desestimado') flow = ['recibido','en_revision','desestimado'];
@@ -1267,31 +1295,13 @@ function clusterIcon(cluster){
 
 var MapMod = {
   map:null, cluster:null, plain:null, heat:null, markers:{}, sectorRect:null,
-  mode:'cluster', basemaps:[], bm:0, offline:false,
+  mode:'cluster', offline:false,
 
   init:function(){
     if(typeof L === 'undefined'){ this.offline = true; this.showFallback(); return; }
     this.map = L.map('map', {center:CONFIG.center, zoom:CONFIG.zoom, zoomControl:true});
-    /* Cartografías base alternables. Si CONFIG.stadiaApiKey tiene valor,
-       la capa Alidade Smooth (Stadia Maps) queda primera y por defecto. */
-    this.basemaps = [];
-    this.basemapNames = [];
-    if(CONFIG.stadiaApiKey){
-      var stadia = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png?api_key=' + encodeURIComponent(CONFIG.stadiaApiKey), {maxZoom:19, attribution:'&copy; Stadia Maps &copy; OpenStreetMap contributors'});
-      var stadiaWarned = false;
-      stadia.on('tileerror', function(){
-        if(stadiaWarned) return;
-        stadiaWarned = true;
-        toast('La cartografía Stadia no se pudo cargar (clave inválida, sin crédito o dominio no autorizado). Alterná la cartografía base con el botón de capas.', 'warn', 6000);
-      });
-      this.basemaps.push(stadia);
-      this.basemapNames.push('Alidade Smooth (Stadia Maps)');
-    }
-    this.basemaps.push(L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {maxZoom:19, attribution:'&copy; OpenStreetMap &middot; &copy; CARTO'}));
-    this.basemapNames.push('Clara (CARTO + OpenStreetMap)');
-    this.basemaps.push(L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:19, attribution:'&copy; Colaboradores de OpenStreetMap'}));
-    this.basemapNames.push('Estándar (OpenStreetMap)');
-    this.basemaps[0].addTo(this.map);
+    /* Cartografía base única: OpenStreetMap. */
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:19, attribution:'&copy; Colaboradores de OpenStreetMap'}).addTo(this.map);
     this.plain = L.layerGroup().addTo(this.map);
     this.cluster = L.markerClusterGroup({maxClusterRadius:55, showCoverageOnHover:false, spiderfyOnMaxZoom:true, disableClusteringAtZoom:18, iconCreateFunction:clusterIcon}).addTo(this.map);
     /* En móvil: tocar el mapa cierra la leyenda expandida */
@@ -1397,14 +1407,6 @@ var MapMod = {
     Prefs.save();
   },
 
-  toggleBasemap:function(){
-    if(this.offline) return;
-    this.map.removeLayer(this.basemaps[this.bm]);
-    this.bm = (this.bm + 1) % this.basemaps.length;
-    this.basemaps[this.bm].addTo(this.map);
-    toast('Cartografía: ' + (this.basemapNames[this.bm] || 'alternativa'), 'info', 2200);
-  },
-
   setSector:function(bounds, label){
     this.clearSector(false);
     if(!this.offline){
@@ -1413,6 +1415,16 @@ var MapMod = {
       this.map.fitBounds(bounds.pad(0.3));
     }
     State.sector = {bounds:bounds, label:label};
+  },
+
+  showSector:function(bounds, label){
+    this.clearSector(false);
+    if(!this.offline){
+      this.sectorRect = L.rectangle(bounds, {color:'#1d4ed8', weight:2, dashArray:'6 5', fillOpacity:0.06}).addTo(this.map);
+      this.map.invalidateSize();
+      this.map.fitBounds(bounds.pad(0.3));
+    }
+    if(label) toast('Zona: ' + label, 'info', 2400);
   },
 
   clearSector:function(refresh){
@@ -1726,52 +1738,60 @@ function exportCsv(){
 
 /* ---------------- Zonas prioritarias ---------------- */
 var ZonesView = {
+  mapBounds:{},
   render:function(){
     var set = Data.filtered;
-    var cell = CONFIG.sectorCellDeg;
-    var buckets = {};
+    var groups = {};
     set.forEach(function(r){
-      var i = Math.floor(r.latitude / cell), j = Math.floor(r.longitude / cell);
-      var k = i + ':' + j;
-      (buckets[k] = buckets[k] || []).push(r);
+      if(typeof r.latitude !== 'number' || typeof r.longitude !== 'number') return;
+      var barrio = nearestBarrio(r.latitude, r.longitude);
+      if(!barrio) return;
+      if(!groups[barrio.id]) groups[barrio.id] = {barrio:barrio, arr:[]};
+      groups[barrio.id].arr.push(r);
     });
     var zones = [];
-    Object.keys(buckets).forEach(function(k){
-      var arr = buckets[k];
+    Object.keys(groups).forEach(function(k){
+      var g = groups[k], arr = g.arr;
       if(arr.length < 3) return;
       var pend = arr.filter(isPending).length;
       var hc = arr.filter(function(r){ return r.priority === 'alta' || r.priority === 'critica'; }).length;
       var old = arr.filter(function(r){ return isPending(r) && daysSince(r.createdAt) > 30; }).length;
       var last30 = arr.filter(function(r){ return daysSince(r.createdAt) <= 30; }).length;
       var prev30 = arr.filter(function(r){ var d = daysSince(r.createdAt); return d > 30 && d <= 60; }).length;
-      zones.push({key:k, arr:arr, pend:pend, hc:hc, old:old, last30:last30, prev30:prev30,
-        score:arr.length + pend * 1.5 + hc * 2 + old * 1.5});
+      var lats = arr.map(function(r){ return r.latitude; }), lngs = arr.map(function(r){ return r.longitude; });
+      var minLat = Math.min.apply(null, lats), maxLat = Math.max.apply(null, lats);
+      var minLng = Math.min.apply(null, lngs), maxLng = Math.max.apply(null, lngs);
+      var padLat = Math.max((maxLat - minLat) * 0.2, 0.0012);
+      var padLng = Math.max((maxLng - minLng) * 0.2, 0.0012);
+      var bounds = (typeof L !== 'undefined') ? L.latLngBounds([[minLat - padLat, minLng - padLng], [maxLat + padLat, maxLng + padLng]]) : null;
+      zones.push({id:k, barrio:g.barrio, arr:arr, pend:pend, hc:hc, old:old, last30:last30, prev30:prev30,
+        score:arr.length + pend * 1.5 + hc * 2 + old * 1.5, bounds:bounds});
     });
     zones.sort(function(a, b){ return b.score - a.score; });
     zones = zones.slice(0, 6);
 
-    $('zonesMeta').textContent = 'Basado en ' + set.length + ' reportes del conjunto activo · reglas de puntaje visibles abajo · sectores de etiquetas simuladas';
+    this.mapBounds = {};
+    zones.forEach(function(z){ if(z.bounds) ZonesView.mapBounds[z.id] = z.bounds; });
+
+    $('zonesMeta').textContent = 'Basado en ' + set.length + ' reportes del conjunto activo · barrios de Las Toscas Santa Fe · asignación por cercanía y delimitación aproximada';
     var grid = $('zonesGrid');
     if(!zones.length){ grid.innerHTML = ''; $('zonesEmpty').hidden = false; return; }
     $('zonesEmpty').hidden = true;
-    var letters = ['A','B','C','D','E','F'];
     var html = '';
     zones.forEach(function(z, idx){
-      var lat0 = parseFloat(z.key.split(':')[0]) * cell, lng0 = parseFloat(z.key.split(':')[1]) * cell;
-      var b = L ? L.latLngBounds([[lat0, lng0],[lat0 + cell, lng0 + cell]]) : null;
       var cats = {};
       z.arr.forEach(function(r){ cats[r.category] = (cats[r.category] || 0) + 1; });
       var top = Object.keys(cats).sort(function(a, c){ return cats[c] - cats[a]; }).slice(0, 3);
       var evo = z.last30 > z.prev30 ? '<span class="zc-evo up">' + glyph('arrowUp', 14) + '+' + (z.last30 - z.prev30) + ' en 30 días</span>'
         : (z.last30 < z.prev30 ? '<span class="zc-evo down">' + glyph('arrowDown', 14) + '-' + (z.prev30 - z.last30) + ' en 30 días</span>'
         : '<span class="zc-evo flat">' + glyph('flat', 14) + 'Estable (30 días)</span>');
-      var reason = 'Concentración de ' + z.arr.length + ' reportes en un radio de unas 4 cuadras' +
+      var reason = 'Concentración de ' + z.arr.length + ' reportes en ' + z.barrio.name +
         (z.pend ? '; ' + z.pend + ' siguen pendientes' : '') +
         (z.hc ? '; ' + z.hc + ' con prioridad alta o crítica' : '') +
         (z.old ? '; ' + z.old + ' sin resolver hace más de 30 días' : '') + '.';
       html += '<div class="zone-card">' +
-        '<div class="zc-head"><span class="zc-rank r' + (idx+1) + '">' + letters[idx] + '</span>' +
-        '<div><span class="zc-name">Sector de demostración ' + letters[idx] + '</span><span class="zc-tag">Etiqueta simulada · referencia aproximada, no es un barrio oficial</span></div></div>' +
+        '<div class="zc-head"><span class="zc-rank r' + (idx+1) + '">' + (idx+1) + '</span>' +
+        '<div><span class="zc-name">' + esc(z.barrio.name) + '</span><span class="zc-tag">Barrio de Las Toscas · delimitación aproximada</span></div></div>' +
         '<div class="zc-stats">' +
           '<div class="zc-stat"><b>' + z.arr.length + '</b><span>reportes</span></div>' +
           '<div class="zc-stat"><b>' + z.pend + '</b><span>pendientes</span></div>' +
@@ -1781,7 +1801,7 @@ var ZonesView = {
         '<div class="zc-cats">' + top.map(function(c){ return chipCat(c); }).join('') + '</div>' +
         evo +
         '<div class="zc-reason"><b>Motivo:</b> ' + esc(reason) + ' Puntaje: ' + (Math.round(z.score * 10) / 10) + ' (reportes + 1,5×pendientes + 2×alta/crítica + 1,5×antigüedad).</div>' +
-        '<div class="zc-foot">' + (b ? '<button class="btn btn-primary btn-sm" data-zone="' + esc(z.key) + '" data-lat0="' + lat0 + '" data-lng0="' + lng0 + '">Ver en el mapa</button>' : '') + '</div>' +
+        '<div class="zc-foot">' + (z.bounds ? '<button class="btn btn-primary btn-sm" data-zone="' + esc(z.id) + '">Ver en el mapa</button>' : '') + '</div>' +
       '</div>';
     });
     grid.innerHTML = html;
@@ -2394,7 +2414,6 @@ function bindEvents(){
   $('lgHead').addEventListener('click', function(){
     $('mapLegend').classList.toggle('expanded');
   });
-  $('btnBasemap').addEventListener('click', function(){ MapMod.toggleBasemap(); });
 
   /* Panel de filtros */
   $('filtersPanel').addEventListener('change', function(e){
@@ -2518,14 +2537,13 @@ function bindEvents(){
   $('zonesGrid').addEventListener('click', function(e){
     var b = e.target.closest('[data-zone]');
     if(!b) return;
-    var lat0 = parseFloat(b.getAttribute('data-lat0')), lng0 = parseFloat(b.getAttribute('data-lng0'));
-    var cell = CONFIG.sectorCellDeg;
-    var bounds = L.latLngBounds([[lat0, lng0], [lat0 + cell, lng0 + cell]]);
+    var bounds = ZonesView.mapBounds[b.getAttribute('data-zone')];
+    if(!bounds) return;
     var label = b.closest('.zone-card').querySelector('.zc-name').textContent.trim();
-    MapMod.setSector(bounds, label + ' (simulada)');
     openView('map');
+    if(State.sector) MapMod.clearSector(false);
     refreshAll();
-    toast('Mostrando los reportes de ' + label + '. Quitá el chip de zona para volver al conjunto completo.', 'info', 4200);
+    MapMod.showSector(bounds, label);
   });
 
   /* Intervenciones */

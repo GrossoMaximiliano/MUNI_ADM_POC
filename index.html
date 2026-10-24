@@ -482,6 +482,69 @@ h1,h2,h3,h4{line-height:1.25}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.001s !important;transition-duration:.001s !important}
 }
+
+/* ---------- Módulos de gestión (inicio, multas, extracciones, solicitudes, trámites, ciudadanos) ---------- */
+.gview-inner{padding:18px 20px 26px;max-width:1180px;margin:0 auto}
+.g-head{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.g-title{font-size:19px;font-weight:800;color:var(--ink-900);letter-spacing:-.01em;margin:0}
+.g-sub{font-size:12.5px;color:var(--ink-400);margin:2px 0 0}
+.g-tools{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.g-search{display:flex;align-items:center;gap:7px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:0 10px;height:36px;min-width:230px}
+.g-search svg{width:15px;height:15px;stroke:var(--ink-400);flex:none}
+.g-search input{flex:1;min-width:0;border:0;outline:0;background:none;font-size:13px;color:var(--ink-900)}
+.gchips{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 12px}
+.gchip{border:1px solid var(--line);background:var(--card);color:var(--ink-700);border-radius:999px;padding:6px 12px;font-size:12px;font-weight:700;cursor:pointer;transition:background .15s,color .15s,border-color .15s}
+.gchip:hover{border-color:var(--blue-600);color:var(--blue-700)}
+.gchip.on{background:var(--blue-600);border-color:var(--blue-600);color:#fff}
+.gcard{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.gtable{width:100%;border-collapse:collapse;font-size:12.5px}
+.gtable th{background:var(--soft);text-align:left;padding:9px 12px;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-400);border-bottom:1px solid var(--line);white-space:nowrap}
+.gtable td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+.gtable tbody tr:last-child td{border-bottom:0}
+.gtable tbody tr{cursor:pointer;transition:background .12s}
+.gtable tbody tr:hover{background:var(--sky-100)}
+.gtable .num{font-variant-numeric:tabular-nums;font-weight:700;color:var(--ink-900)}
+.gtable .mut{color:var(--ink-400);font-size:11.5px}
+.gtable .row-sel{cursor:pointer}
+.gempty{padding:26px;text-align:center;color:var(--ink-400);font-size:13px}
+.gfoot{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:9px 12px;border-top:1px solid var(--line);font-size:12px;color:var(--ink-400)}
+.pat{display:inline-block;font-weight:800;letter-spacing:.04em;border:1px solid var(--line);border-radius:6px;padding:2px 7px;background:var(--soft);color:var(--ink-900)}
+/* Dashboard inicial */
+.dash{padding:18px 20px 26px;max-width:1180px;margin:0 auto}
+.dash-hi{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.dash-kgrp{margin:16px 0 8px;font-size:11px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-400);display:flex;align-items:center;gap:8px}
+.dash-kgrp::after{content:'';flex:1;height:1px;background:var(--line)}
+.dkpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(138px,1fr));gap:10px}
+.dkpi{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:11px 13px}
+.dkpi .n{font-size:22px;font-weight:800;color:var(--ink-900);font-variant-numeric:tabular-nums;line-height:1.1}
+.dkpi .l{font-size:11.5px;font-weight:600;color:var(--ink-700);margin-top:2px}
+.dkpi.hot .n{color:var(--red-600)}
+.dkpi.ok .n{color:#15803d}
+.dkpi.wrn .n{color:#b45309}
+.dkpi.inf .n{color:var(--blue-700)}
+.dash-cols{display:grid;grid-template-columns:1.6fr 1fr;gap:12px;margin-top:14px}
+@media(max-width:920px){.dash-cols{grid-template-columns:1fr}}
+.dcard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:13px 14px}
+.dcard h3{font-size:13.5px;font-weight:800;color:var(--ink-900);margin:0 0 9px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.dcard h3 .lnk{font-size:11.5px;font-weight:700;color:var(--blue-600);background:none;border:0;cursor:pointer;font-family:inherit}
+.act-row{display:flex;align-items:center;gap:10px;padding:7px 6px;border-bottom:1px dashed var(--line);cursor:pointer;border-radius:8px;border-radius:8px}
+.act-row:last-child{border-bottom:0}
+.act-row:hover{background:var(--sky-100)}
+.act-ic{width:30px;height:30px;min-width:30px;border-radius:9px;display:grid;place-items:center;background:var(--soft);color:var(--ink-700)}
+.act-t{font-size:12.5px;font-weight:700;color:var(--ink-900);line-height:1.25}
+.act-s{font-size:11px;color:var(--ink-400);margin-top:1px}
+.qops{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:8px}
+.qop{display:flex;flex-direction:column;align-items:flex-start;gap:6px;background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:10px 12px;cursor:pointer;font:inherit;text-align:left;transition:border-color .15s,background .15s}
+.qop:hover{border-color:var(--blue-600);background:var(--sky-100)}
+.qop .qi{width:28px;height:28px;border-radius:9px;background:var(--card);border:1px solid var(--line);display:grid;place-items:center;color:var(--blue-600)}
+.qop .qt{font-size:12.5px;font-weight:700;color:var(--ink-900)}
+.big-money{font-size:17px;font-weight:800;color:var(--ink-900);font-variant-numeric:tabular-nums}
+.frow{display:flex;justify-content:space-between;gap:10px;padding:6px 0;border-bottom:1px dashed var(--line);font-size:12.5px}
+.frow:last-child{border-bottom:0}
+.frow .fk{color:var(--ink-700);font-weight:600}
+.frow .fv{font-weight:800;color:var(--ink-900);font-variant-numeric:tabular-nums;text-align:right}
+.dash-note{font-size:11px;color:var(--ink-400);margin-top:12px}
+
 </style>
 </head>
 <body>
@@ -525,8 +588,14 @@ h1,h2,h3,h4{line-height:1.25}
 
 <aside class="sidebar" id="sidebar" aria-label="Navegación principal">
   <nav class="side-nav">
-    <button class="nav-item is-active" data-view="map"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/></svg><span>Mapa general</span></button>
-    <button class="nav-item" data-view="list"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M8 6h13M8 12h13M8 18h13M3.5 6h.01M3.5 12h.01M3.5 18h.01"/></svg><span>Reclamos y solicitudes</span></button>
+    <button class="nav-item is-active" data-view="home"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg><span>Panel general</span></button>
+    <button class="nav-item" data-view="multas"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2.5 20h19L12 3z"/><path d="M12 10v4M12 17h.01"/></svg><span>Multas</span></button>
+    <button class="nav-item" data-view="extracciones"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h1a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg><span>Extracciones (grúa)</span></button>
+    <button class="nav-item" data-view="list"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M8 6h13M8 12h13M8 18h13M3.5 6h.01M3.5 12h.01M3.5 18h.01"/></svg><span>Reclamos</span></button>
+    <button class="nav-item" data-view="solicitudes"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg><span>Solicitudes</span></button>
+    <button class="nav-item" data-view="tramites"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 3h6v3H9zM9 12l2 2 4-4"/></svg><span>Trámites</span></button>
+    <button class="nav-item" data-view="ciudadanos"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span>Ciudadanos</span></button>
+    <button class="nav-item" data-view="map"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/></svg><span>Mapa general</span></button>
     <button class="nav-item" data-view="zones"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.1-7-11a7 7 0 0 1 14 0c0 4.9-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg><span>Zonas prioritarias</span></button>
     <button class="nav-item" data-view="stats"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M3 21h18M7 17V9M12 17V5M17 17v-6"/></svg><span>Estadísticas</span></button>
     <button class="nav-item" data-view="interventions"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 3h6v3H9zM9 12l2 2 4-4"/></svg><span>Intervenciones</span></button>
@@ -546,8 +615,53 @@ h1,h2,h3,h4{line-height:1.25}
 <div class="scrim" id="scrim"></div>
 <main class="main" id="main">
 
+<!-- ============ VISTA: PANEL GENERAL (INICIO) ============ -->
+<section class="view is-active" id="view-home">
+  <div class="dash">
+    <div class="dash-hi">
+      <div>
+        <h2 class="g-title">Panel general de gestión</h2>
+        <p class="g-sub" id="homeFecha"></p>
+      </div>
+      <span class="demo-chip"><i></i>DATOS SIMULADOS</span>
+    </div>
+
+    <div class="dash-kgrp">Multas e infracciones</div>
+    <div class="dkpis" id="kMultas"></div>
+
+    <div class="dash-kgrp">Impuestos y tasas</div>
+    <div class="dkpis" id="kImpuestos"></div>
+
+    <div class="dash-cols">
+      <div class="dcard">
+        <h3>Recaudación y deuda (demo)</h3>
+        <div id="kFiscal"></div>
+      </div>
+      <div class="dcard">
+        <h3>Accesos rápidos</h3>
+        <div class="qops" id="homeQuick"></div>
+      </div>
+    </div>
+
+    <div class="dash-kgrp">Atención ciudadana</div>
+    <div class="dkpis" id="kAtencion"></div>
+
+    <div class="dash-cols" style="margin-top:12px">
+      <div class="dcard">
+        <h3>Actividad municipal reciente</h3>
+        <div id="homeActividad"></div>
+      </div>
+      <div class="dcard">
+        <h3>Extracciones y depósito</h3>
+        <div id="kExtracciones"></div>
+      </div>
+    </div>
+    <p class="dash-note">Prototipo de demostración: todos los importes, ciudadanos, trámites, multas y extracciones son ficticios, no representan movimientos reales y no tienen validez administrativa. Los cambios se guardan solo en este navegador.</p>
+  </div>
+</section>
+
 <!-- ============ VISTA: MAPA GENERAL ============ -->
-<section class="view view-map is-active" id="view-map">
+<section class="view view-map" id="view-map">
   <div class="kpi-strip" id="kpiStrip" aria-label="Indicadores principales"></div>
   <div class="map-layout">
     <div class="map-wrap" id="mapWrap">
@@ -651,7 +765,7 @@ h1,h2,h3,h4{line-height:1.25}
 <section class="view" id="view-list">
   <div class="view-inner">
     <div class="v-head">
-      <div><h2 class="v-title">Reclamos y solicitudes</h2><p class="v-sub" id="listSub"></p></div>
+      <div><h2 class="v-title">Reclamos territoriales</h2><p class="v-sub" id="listSub"></p></div>
       <div class="v-actions">
         <div class="f-search" style="width:230px"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="listSearch" type="search" placeholder="Buscar en el listado…"></div>
         <select id="listSort" class="f-select w-auto" aria-label="Ordenar listado">
@@ -768,6 +882,112 @@ h1,h2,h3,h4{line-height:1.25}
         <div class="ic-head"><span class="ic-dot green"></span><h3>Completadas</h3><span class="ic-count" id="cntHechas">0</span></div>
         <div class="ic-body" id="colHechas"></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VISTA: MULTAS ============ -->
+<section class="view" id="view-multas">
+  <div class="gview-inner">
+    <div class="g-head">
+      <div><h2 class="g-title">Multas e infracciones</h2><p class="g-sub" id="multasSub"></p></div>
+      <div class="g-tools">
+        <div class="g-search"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="mvSearch" type="search" placeholder="Acta, motivo, dominio o ciudadano…"></div>
+      </div>
+    </div>
+    <div class="gchips" id="mvChips"></div>
+    <div class="gcard">
+      <table class="gtable">
+        <thead><tr><th>Acta</th><th>Fecha</th><th>Motivo</th><th>Dominio</th><th>Ciudadano</th><th style="text-align:right">Importe</th><th>Estado</th><th>Acciones</th></tr></thead>
+        <tbody id="mvTbody"></tbody>
+      </table>
+      <div class="gempty" id="mvEmpty" hidden>Sin multas que coincidan con la búsqueda o el filtro de estado.</div>
+      <div class="gfoot"><span id="mvCount"></span><span>Demo: cambiá el estado desde el listado o abrí el detalle.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VISTA: EXTRACCIONES DE VEHÍCULOS ============ -->
+<section class="view" id="view-extracciones">
+  <div class="gview-inner">
+    <div class="g-head">
+      <div><h2 class="g-title">Extracciones de vehículos (grúa)</h2><p class="g-sub">Registro de vehículos retirados al depósito municipal por inspectores de tránsito. Cada extracción genera automáticamente su acta de infracción.</p></div>
+      <div class="g-tools">
+        <div class="g-search"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="evSearch" type="search" placeholder="Número, dominio, motivo o ubicación…"></div>
+        <button class="btn btn-primary btn-sm" id="btnNuevaExtraccion"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>Registrar extracción</button>
+      </div>
+    </div>
+    <div class="gchips" id="evChips"></div>
+    <div class="gcard">
+      <table class="gtable">
+        <thead><tr><th>Número</th><th>Fecha</th><th>Dominio</th><th>Tipo</th><th>Motivo</th><th>Ubicación</th><th>Acta generada</th><th>Estado</th><th>Acciones</th></tr></thead>
+        <tbody id="evTbody"></tbody>
+      </table>
+      <div class="gempty" id="evEmpty" hidden>Sin extracciones que coincidan con la búsqueda o el filtro de estado.</div>
+      <div class="gfoot"><span id="evCount"></span><span>Los vehículos en depósito pueden marcarse como entregados.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VISTA: SOLICITUDES DE SERVICIOS ============ -->
+<section class="view" id="view-solicitudes">
+  <div class="gview-inner">
+    <div class="g-head">
+      <div><h2 class="g-title">Solicitudes de servicios</h2><p class="g-sub">Pedidos de servicios municipales enviados por los vecinos (módulo independiente de Reclamos).</p></div>
+      <div class="g-tools">
+        <div class="g-search"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="svSearch" type="search" placeholder="Número, servicio, dirección o ciudadano…"></div>
+      </div>
+    </div>
+    <div class="gchips" id="svChips"></div>
+    <div class="gcard">
+      <table class="gtable">
+        <thead><tr><th>Número</th><th>Fecha</th><th>Servicio</th><th>Dirección</th><th>Ciudadano</th><th>Estado</th><th>Acciones</th></tr></thead>
+        <tbody id="svTbody"></tbody>
+      </table>
+      <div class="gempty" id="svEmpty" hidden>Sin solicitudes que coincidan con la búsqueda o el filtro de estado.</div>
+      <div class="gfoot"><span id="svCount"></span><span>Avance de estados: Pendiente → Programada → Finalizada.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VISTA: TRÁMITES ============ -->
+<section class="view" id="view-tramites">
+  <div class="gview-inner">
+    <div class="g-head">
+      <div><h2 class="g-title">Trámites iniciados por ciudadanos</h2><p class="g-sub">Expedientes de trámites con seguimiento de estado por el personal municipal.</p></div>
+      <div class="g-tools">
+        <div class="g-search"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="tvSearch" type="search" placeholder="Número, trámite o ciudadano…"></div>
+      </div>
+    </div>
+    <div class="gchips" id="tvChips"></div>
+    <div class="gcard">
+      <table class="gtable">
+        <thead><tr><th>Número</th><th>Fecha</th><th>Trámite</th><th>Ciudadano</th><th>Estado</th><th>Acciones</th></tr></thead>
+        <tbody id="tvTbody"></tbody>
+      </table>
+      <div class="gempty" id="tvEmpty" hidden>Sin trámites que coincidan con la búsqueda o el filtro de estado.</div>
+      <div class="gfoot"><span id="tvCount"></span><span>Estados: Recibido → En revisión → En emisión → Listo para retirar → Finalizado.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VISTA: CIUDADANOS ============ -->
+<section class="view" id="view-ciudadanos">
+  <div class="gview-inner">
+    <div class="g-head">
+      <div><h2 class="g-title">Padrón de ciudadanos</h2><p class="g-sub">Ciudadanos registrados en la demo con su deuda municipal (simulada).</p></div>
+      <div class="g-tools">
+        <div class="g-search"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="cvSearch" type="search" placeholder="Nombre, DNI, correo o barrio…"></div>
+      </div>
+    </div>
+    <div class="gchips" id="cvChips"></div>
+    <div class="gcard">
+      <table class="gtable">
+        <thead><tr><th>Ciudadano</th><th>DNI</th><th>Correo</th><th>Barrio</th><th style="text-align:right">Deuda pendiente</th><th>Estado</th><th>Acciones</th></tr></thead>
+        <tbody id="cvTbody"></tbody>
+      </table>
+      <div class="gempty" id="cvEmpty" hidden>Sin ciudadanos que coincidan con la búsqueda o el filtro de estado.</div>
+      <div class="gfoot"><span id="cvCount"></span><span>El bloqueo de cuentas es simulado y solo afecta esta demostración.</span></div>
     </div>
   </div>
 </section>
@@ -1063,7 +1283,7 @@ var Data = {
 
 /* ---------------- Estado de la interfaz ---------------- */
 var State = {
-  view:'map',
+  view:'home',
   sector:null, /* {bounds, label} filtro territorial activo */
   listPage:1,
   areaFilter:'', /* filtro de área en intervenciones */
@@ -1487,6 +1707,12 @@ function openView(v){
   if(v === 'map'){ MapMod.invalidate(); }
   if(v === 'stats'){ StatsView.render(); }
   if(v === 'zones'){ ZonesView.render(); }
+  if(v === 'home'){ HomeView.render(); }
+  if(v === 'multas'){ MultasView.render(); }
+  if(v === 'extracciones'){ ExtraccionesView.render(); }
+  if(v === 'solicitudes'){ SolicitudesView.render(); }
+  if(v === 'tramites'){ TramitesView.render(); }
+  if(v === 'ciudadanos'){ CiudadanosView.render(); }
 }
 
 function refreshAll(){
@@ -1501,6 +1727,7 @@ function refreshAll(){
   if(State.view === 'stats') StatsView.render();
   if(State.view === 'zones') ZonesView.render();
   if(State.view === 'interventions') IntervView.render();
+  refreshGestionView();
 }
 
 function updateResultsInfo(){
@@ -2318,10 +2545,751 @@ function openPortal(){
   }
 }
 
+/* ============================================================
+   MÓDULOS DE GESTIÓN (demostración): multas, extracciones de
+   vehículos (grúa), solicitudes de servicios, trámites y padrón
+   de ciudadanos. Datos simulados propios, independientes de los
+   reclamos territoriales. Persistencia local separada.
+   Futura integración: reemplazar Gestion por la API municipal.
+   ============================================================ */
+function fmtMoney(n){
+  return '$ ' + (Math.round((n || 0) * 100) / 100).toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
+function gd(daysAgo, h, m){
+  var d = new Date();
+  d.setDate(d.getDate() - daysAgo);
+  d.setHours(h == null ? 10 : h, m == null ? 0 : m, 0, 0);
+  return d.toISOString();
+}
+function gf(daysAhead, h, m){
+  var d = new Date();
+  d.setDate(d.getDate() + daysAhead);
+  d.setHours(h == null ? 9 : h, m == null ? 0 : m, 0, 0);
+  return d;
+}
+
+var MULTA_ESTADOS = [
+  {id:'pendiente', name:'Pendiente', tone:'b-amber'},
+  {id:'vencida', name:'Vencida', tone:'b-red'},
+  {id:'pagada', name:'Pagada', tone:'b-green'},
+  {id:'en_descargo', name:'En descargo', tone:'b-blue'}
+];
+function multaEstadoById(id){ for(var i = 0; i < MULTA_ESTADOS.length; i++){ if(MULTA_ESTADOS[i].id === id) return MULTA_ESTADOS[i]; } return MULTA_ESTADOS[0]; }
+function badgeMultaEstado(id){ var e = multaEstadoById(id); return '<span class="badge ' + e.tone + '">' + esc(e.name) + '</span>'; }
+
+var EX_MOTIVOS = [
+  {id:'rampa', nombre:'Obstrucción de rampa o senda peatonal', motivoMulta:'Estacionamiento obstruyendo rampa de acceso o senda peatonal', importe:35000},
+  {id:'doble_fila', nombre:'Doble fila', motivoMulta:'Estacionamiento en doble fila', importe:18000},
+  {id:'lugar_prohibido', nombre:'Estacionamiento en lugar prohibido', motivoMulta:'Estacionamiento en lugar prohibido', importe:12000},
+  {id:'vereda', nombre:'Estacionamiento sobre vereda', motivoMulta:'Estacionamiento sobre vereda', importe:9800},
+  {id:'abandono', nombre:'Vehículo en aparente abandono', motivoMulta:'Vehículo abandonado en la vía pública', importe:15000},
+  {id:'riesgo', nombre:'Riesgo para la circulación', motivoMulta:'Estacionamiento que genera riesgo para la circulación', importe:22000}
+];
+function exMotivoById(id){ for(var i = 0; i < EX_MOTIVOS.length; i++){ if(EX_MOTIVOS[i].id === id) return EX_MOTIVOS[i]; } return null; }
+var EX_TIPOS = ['Automóvil', 'Motocicleta', 'Camioneta', 'Camión', 'Maquinaria agrícola o vial', 'Otro'];
+var TRAM_ESTADOS = ['Recibido', 'En revisión', 'En emisión', 'Listo para retirar', 'Finalizado'];
+var TRAM_COMENT = {
+  'En revisión':'El área responsable está evaluando la documentación (simulado).',
+  'En emisión':'Se está generando el documento solicitado (simulado).',
+  'Listo para retirar':'El documento está listo para retirar en la dependencia (simulado).',
+  'Finalizado':'El trámite finalizó (simulado).'
+};
+var SOL_ESTADOS = ['Pendiente', 'Programada', 'Finalizada'];
+var SOL_TIPOS = ['Camión atmosférico (desagote de pozos negros)', 'Junte de ramas / poda', 'Recolección de residuos voluminosos', 'Desmalezado de terreno baldío', 'Riego de calles', 'Zanjeo / limpieza de cunetas'];
+
+var GESTION_KEY = 'lt-mapa-ciudadano:gestion:v1';
+var Gestion = {
+  data:{ v:1, ciudadanos:[], obligaciones:[], multas:[], extracciones:[], tramites:[], solicitudes:[] },
+  load:function(){
+    try{
+      var raw = localStorage.getItem(GESTION_KEY);
+      if(raw){
+        var d = JSON.parse(raw);
+        if(d && d.v === 1 && Array.isArray(d.multas) && Array.isArray(d.ciudadanos)){ this.data = d; return; }
+      }
+    }catch(e){}
+    this.data = buildDemoGestion();
+    this.save();
+  },
+  save:function(){
+    try{ localStorage.setItem(GESTION_KEY, JSON.stringify(this.data)); }
+    catch(e){ toast('No se pudo guardar el módulo de gestión en este navegador.', 'err', 5000); }
+  },
+  nextActa:function(){
+    var max = 240;
+    this.data.multas.forEach(function(m){
+      var n = parseInt(String(m.acta || '').split('-')[1] || '0', 10);
+      if(!isNaN(n) && n > max) max = n;
+    });
+    return '2026-' + String(max + 1).padStart(5, '0');
+  },
+  nextExtNumero:function(){
+    var max = 40;
+    this.data.extracciones.forEach(function(x){
+      var n = parseInt(String(x.numero || '').split('-')[2] || '0', 10);
+      if(!isNaN(n) && n > max) max = n;
+    });
+    return 'EXT-2026-' + String(max + 1).padStart(6, '0');
+  },
+  ciudadanoById:function(id){ for(var i = 0; i < this.data.ciudadanos.length; i++){ if(this.data.ciudadanos[i].id === id) return this.data.ciudadanos[i]; } return null; },
+  ciudadanoNombre:function(id){ var c = this.ciudadanoById(id); return c ? (c.nombre + ' ' + c.apellido) : 'Sin identificar'; },
+  multaById:function(id){ for(var i = 0; i < this.data.multas.length; i++){ if(this.data.multas[i].id === id) return this.data.multas[i]; } return null; },
+  deudaCiudadano:function(id){
+    var d = 0;
+    this.data.obligaciones.forEach(function(o){ if(o.ciudadanoId === id && o.estado !== 'pagada') d += (o.importe || 0) + (o.intereses || 0); });
+    this.data.multas.forEach(function(m){ if(m.ciudadanoId === id && m.estado !== 'pagada') d += (m.importe || 0); });
+    return d;
+  }
+};
+
+function buildDemoGestion(){
+  var rnd = mulberry32(20261120);
+  function pick(arr){ return arr[Math.floor(rnd() * arr.length)]; }
+  var data = { v:1, ciudadanos:[], obligaciones:[], multas:[], extracciones:[], tramites:[], solicitudes:[] };
+
+  var nombres = ['Maximiliano','Claudia','Sergio','Valeria','Andrea','Luciano','Marcela','Diego','Rosa','Fernando','Silvina','Jorge'];
+  var apellidos = ['Rodríguez','Sosa','Benítez','Núñez','Ferreyra','Cáceres','Ledesma','Ojeda','Ramírez','Pereyra','González','Aguirre'];
+  for(var i = 0; i < 12; i++){
+    var b = BARRIOS[i % 10];
+    data.ciudadanos.push({
+      id:'ciu-' + (i + 1),
+      nombre:nombres[i], apellido:apellidos[i],
+      dni:String(24 + (i % 10)) + '.' + String(100 + i * 7) + '.' + String(300 + i * 13),
+      email:(nombres[i] + '.' + apellidos[i]).toLowerCase() + '@ejemplo.com',
+      telefono:'3482 5' + String(10000 + i * 137).slice(0, 5),
+      domicilio:'Calle ' + (2 + i * 3) + ' N°' + (100 + i * 37),
+      barrio:b.name.replace('Barrio ', ''),
+      alta:gd(600 - i * 41, 9, 30),
+      estado:(i === 4 || i === 9) ? 'bloqueado' : 'activo'
+    });
+  }
+  var dominiosSeed = ['AB 529 JR','AF 214 PK','AC 512 NB','CQ 455 LM','AD 772 GK','AA 118 QW','AB 903 TR','AB 240 RC','AE 331 HD','BB 102 YU','CD 555 PP','EF 707 QQ'];
+
+  var obligEstados = ['pendiente','pendiente','vencida','pagada','proceso','pagada','vencida','pendiente','pagada','vencida','proceso','pendiente','pagada','pendiente','vencida','pagada'];
+  var obligConceptos = ['Tasa General de Inmuebles','Tasa General de Inmuebles','Patente municipal','Tasa de inspección sanitaria','Derecho de publicidad y propaganda','Tasa por servicios de cementerio'];
+  for(var j = 0; j < 16; j++){
+    var est = obligEstados[j];
+    var imp = 4600 + ((j * 1730) % 21000);
+    data.obligaciones.push({
+      id:'go-' + (j + 1),
+      categoria:obligConceptos[j % obligConceptos.length],
+      identificador:obligConceptos[j % obligConceptos.length] === 'Patente municipal' ? ('Dominio ' + dominiosSeed[j % 12]) : ('Partida 123-' + String(40000 + j * 137)),
+      periodo:'2026 · ' + (j % 2 ? '1ª cuota' : '2ª cuota'),
+      vencimiento:est === 'vencida' ? gd(3 + (j % 4) * 9, 23, 59) : (est === 'pagada' ? gd(10 + (j % 20), 23, 59) : gd(-(2 + (j % 5) * 6), 23, 59)),
+      importe:imp,
+      intereses:est === 'vencida' ? Math.round(imp * 0.04) : 0,
+      estado:est,
+      ciudadanoId:data.ciudadanos[(j * 5) % 12].id
+    });
+  }
+
+  var multaMotivos = [
+    ['Exceso de velocidad en zona escolar', 18500],
+    ['Estacionamiento en lugar prohibido', 6900],
+    ['Falta de casco (motocicleta)', 12300],
+    ['Cruce de semáforo en rojo', 27800],
+    ['Circular sin luces reglamentarias', 7600],
+    ['Exceso de velocidad en avenida', 22400],
+    ['Falta de documentación del vehículo', 5400],
+    ['Estacionamiento en doble fila', 18000]
+  ];
+  var multaEstados = ['pendiente','pendiente','vencida','pagada','en_descargo','pendiente','vencida','pagada','pendiente','en_descargo','pagada','vencida'];
+  for(var k = 0; k < 12; k++){
+    var mo = multaMotivos[k % multaMotivos.length];
+    var mEst = multaEstados[k];
+    data.multas.push({
+      id:'gm-' + (k + 1),
+      acta:'2026-' + String(241 - k).padStart(5, '0'),
+      fecha:gd(k + 1, 9 + (k % 8), 15 + (k % 40)),
+      motivo:mo[0],
+      ubicacion:'Calle ' + (2 + (k * 5) % 30) + (k % 2 ? ' y Calle ' + (5 + (k * 3) % 20) : ' N°' + (100 + k * 53)),
+      importe:mo[1],
+      estado:mEst,
+      ciudadanoId:data.ciudadanos[(k * 3) % 12].id,
+      dominio:dominiosSeed[k],
+      descargos:mEst === 'en_descargo' ? [{numero:'DER-2026-000' + (30 - k), fecha:gd(Math.max(0, k - 2), 12, 0), texto:'Descargo de demostración presentado por el titular (simulado).', estado:'En revisión'}] : [],
+      origenExtraccion:false
+    });
+  }
+
+  /* Multas generadas automáticamente por extracciones (semilla coherente) */
+  data.multas.unshift(
+    { id:'gm-15', acta:'2026-00242', fecha:gd(1, 11, 10), motivo:'Estacionamiento obstruyendo rampa de acceso o senda peatonal', ubicacion:'Calle 6 N°512', importe:35000, estado:'pendiente', ciudadanoId:'ciu-3', dominio:'AC 512 NB', descargos:[], origenExtraccion:true },
+    { id:'gm-14', acta:'2026-00229', fecha:gd(12, 14, 5), motivo:'Estacionamiento sobre vereda', ubicacion:'Calle 7 N°510', importe:9800, estado:'pendiente', ciudadanoId:'ciu-8', dominio:'AA 118 QW', descargos:[], origenExtraccion:true },
+    { id:'gm-16', acta:'2026-00218', fecha:gd(6, 16, 40), motivo:'Estacionamiento en doble fila', ubicacion:'Calle 12 y Calle 5', importe:18000, estado:'pagada', ciudadanoId:'ciu-1', dominio:'AB 529 JR', descargos:[], origenExtraccion:true }
+  );
+
+  data.extracciones = [
+    { id:'ge-1', numero:'EXT-2026-000039', fecha:gd(12, 14, 5), dominio:'AA 118 QW', tipoVehiculo:'Automóvil', motivoId:'vereda', motivo:'Estacionamiento sobre vereda', ubicacion:'Calle 7 N°510', inspector:'Equipo de control (demo)', observaciones:'', estado:'Entregado', multaId:'gm-14' },
+    { id:'ge-2', numero:'EXT-2026-000040', fecha:gd(6, 16, 40), dominio:'AB 529 JR', tipoVehiculo:'Automóvil', motivoId:'doble_fila', motivo:'Doble fila', ubicacion:'Calle 12 y Calle 5', inspector:'Equipo de control (demo)', observaciones:'Retiro con grúa municipal (demo).', estado:'Entregado', multaId:'gm-16' },
+    { id:'ge-3', numero:'EXT-2026-000041', fecha:gd(1, 11, 10), dominio:'AC 512 NB', tipoVehiculo:'Automóvil', motivoId:'rampa', motivo:'Obstrucción de rampa o senda peatonal', ubicacion:'Calle 6 N°512', inspector:'Equipo de control (demo)', observaciones:'Retiro inmediato por seguridad (demo).', estado:'En depósito', multaId:'gm-15' }
+  ];
+
+  var tramNombres = ['Certificado de libre deuda de tasas','Constancia de valuación fiscal','Certificado de residencia','Habilitación comercial','Permiso de publicidad y propaganda','Plan de pagos de deuda municipal','Copia certificada de expediente','Inscripción de comercio','Baja de comercio','Actualización de datos de cuenta'];
+  for(var t = 0; t < 10; t++){
+    var tIdx = t % TRAM_ESTADOS.length;
+    var hist = [{at:gd(t + 1, 9, 15), text:'Solicitud ingresada por el ciudadano (simulado).'}];
+    for(var h2 = 1; h2 <= tIdx; h2++){
+      hist.push({at:gd(Math.max(0, t + 1 - h2), 11, 30), text:'Estado: ' + TRAM_ESTADOS[h2 - 1] + ' → ' + TRAM_ESTADOS[h2] + '. ' + (TRAM_COMENT[TRAM_ESTADOS[h2]] || '')});
+    }
+    data.tramites.push({
+      id:'gt-' + (t + 1),
+      numero:'TRA-2026-' + String(101 + t).padStart(6, '0'),
+      nombre:tramNombres[t],
+      fecha:gd(t + 1, 9, 15),
+      estado:TRAM_ESTADOS[tIdx],
+      ciudadanoId:data.ciudadanos[(t * 2 + 1) % 12].id,
+      historial:hist
+    });
+  }
+
+  var solEstados = ['Pendiente','Pendiente','Pendiente','Programada','Programada','Finalizada'];
+  for(var s = 0; s < 6; s++){
+    var c2 = data.ciudadanos[(s * 3 + 2) % 12];
+    data.solicitudes.push({
+      id:'gs-' + (s + 1),
+      numero:'SOL-2026-' + String(18 + s).padStart(6, '0'),
+      ciudadanoId:c2.id,
+      ciudadanoNombre:c2.nombre + ' ' + c2.apellido,
+      ciudadanoEmail:c2.email,
+      telefono:c2.telefono,
+      tipo:SOL_TIPOS[s % SOL_TIPOS.length],
+      direccion:c2.domicilio,
+      fechaPreferida:gf(2 + s, 9, 0).toISOString().slice(0, 10),
+      observaciones:s % 2 ? 'Coordinar por la mañana (simulado).' : '',
+      fechaSolicitud:gd(s + 1, 10 + s, 20),
+      estado:solEstados[s]
+    });
+  }
+  return data;
+}
+
+function resumenGestion(){
+  var d = Gestion.data;
+  function cnt(arr, est){ return arr.filter(function(x){ return x.estado === est; }).length; }
+  function sum(arr){ return arr.reduce(function(a, x){ return a + (x.importe || 0) + (x.intereses || 0); }, 0); }
+  var deuda = 0;
+  d.obligaciones.forEach(function(o){ if(o.estado !== 'pagada') deuda += (o.importe || 0) + (o.intereses || 0); });
+  d.multas.forEach(function(m){ if(m.estado !== 'pagada') deuda += (m.importe || 0); });
+  return {
+    multas:{ pendientes:cnt(d.multas, 'pendiente'), vencidas:cnt(d.multas, 'vencida'), pagadas:cnt(d.multas, 'pagada'), descargos:cnt(d.multas, 'en_descargo'), total:d.multas.length },
+    impuestos:{ pendientes:cnt(d.obligaciones, 'pendiente'), vencidas:cnt(d.obligaciones, 'vencida'), pagadas:cnt(d.obligaciones, 'pagada'), proceso:cnt(d.obligaciones, 'proceso'), total:d.obligaciones.length },
+    recaudado:sum(d.obligaciones.filter(function(o){ return o.estado === 'pagada'; })) + sum(d.multas.filter(function(m){ return m.estado === 'pagada'; })),
+    deuda:deuda,
+    extracciones:{ enDeposito:cnt(d.extracciones, 'En depósito'), entregadas:cnt(d.extracciones, 'Entregado'), total:d.extracciones.length },
+    tramitesEnCurso:d.tramites.filter(function(t){ return t.estado !== 'Finalizado'; }).length,
+    solicitudesPendientes:d.solicitudes.filter(function(s){ return s.estado === 'Pendiente'; }).length,
+    ciudadanosActivos:cnt(d.ciudadanos, 'activo'),
+    ciudadanosBloqueados:cnt(d.ciudadanos, 'bloqueado'),
+    reclamosAbiertos:Data.reports.filter(isPending).length
+  };
+}
+
+function kpiCard(cls, num, label){
+  return '<div class="dkpi ' + (cls || '') + '"><div class="n">' + num + '</div><div class="l">' + esc(label) + '</div></div>';
+}
+
+var HomeView = {
+  render:function(){
+    var r = resumenGestion();
+    $('homeFecha').textContent = new Date().toLocaleDateString('es-AR', { weekday:'long', day:'numeric', month:'long', year:'numeric' });
+    $('kMultas').innerHTML =
+      kpiCard('wrn', r.multas.pendientes, 'Pendientes') +
+      kpiCard('hot', r.multas.vencidas, 'Vencidas') +
+      kpiCard('ok', r.multas.pagadas, 'Pagadas') +
+      kpiCard('inf', r.multas.descargos, 'En descargo');
+    $('kImpuestos').innerHTML =
+      kpiCard('wrn', r.impuestos.pendientes, 'Pendientes') +
+      kpiCard('hot', r.impuestos.vencidas, 'Vencidas') +
+      kpiCard('ok', r.impuestos.pagadas, 'Pagadas') +
+      kpiCard('inf', r.impuestos.proceso, 'En proceso');
+    $('kFiscal').innerHTML =
+      '<div class="frow"><span class="fk">Recaudación del período (multas + impuestos pagados)</span><span class="fv big-money">' + fmtMoney(r.recaudado) + '</span></div>' +
+      '<div class="frow"><span class="fk">Deuda pendiente de cobro</span><span class="fv" style="color:var(--red-600)">' + fmtMoney(r.deuda) + '</span></div>' +
+      '<div class="frow"><span class="fk">Obligaciones registradas (impuestos y tasas)</span><span class="fv">' + r.impuestos.total + '</span></div>' +
+      '<div class="frow"><span class="fk">Multas registradas</span><span class="fv">' + r.multas.total + '</span></div>';
+    $('homeQuick').innerHTML =
+      '<button class="qop" data-goto="multas"><span class="qi">' + glyph('warn', 15) + '</span><span class="qt">Multas</span></button>' +
+      '<button class="qop" data-goto="extracciones"><span class="qi">' + glyph('locate', 15) + '</span><span class="qt">Extracciones</span></button>' +
+      '<button class="qop" data-goto="list"><span class="qi">' + glyph('doc', 15) + '</span><span class="qt">Reclamos</span></button>' +
+      '<button class="qop" data-goto="solicitudes"><span class="qi">' + glyph('info', 15) + '</span><span class="qt">Solicitudes</span></button>' +
+      '<button class="qop" data-goto="tramites"><span class="qi">' + glyph('doc', 15) + '</span><span class="qt">Trámites</span></button>' +
+      '<button class="qop" data-goto="ciudadanos"><span class="qi">' + glyph('pin', 15) + '</span><span class="qt">Ciudadanos</span></button>';
+    $('kAtencion').innerHTML =
+      kpiCard('wrn', r.reclamosAbiertos, 'Reclamos abiertos') +
+      kpiCard('inf', r.tramitesEnCurso, 'Trámites en curso') +
+      kpiCard('wrn', r.solicitudesPendientes, 'Solicitudes pendientes') +
+      kpiCard('ok', r.ciudadanosActivos, 'Ciudadanos activos') +
+      kpiCard('hot', r.ciudadanosBloqueados, 'Bloqueados');
+    $('kExtracciones').innerHTML =
+      '<div class="frow"><span class="fk">Vehículos en depósito</span><span class="fv">' + r.extracciones.enDeposito + '</span></div>' +
+      '<div class="frow"><span class="fk">Entregados</span><span class="fv">' + r.extracciones.entregadas + '</span></div>' +
+      '<div class="frow"><span class="fk">Extracciones registradas</span><span class="fv">' + r.extracciones.total + '</span></div>';
+    var items = [];
+    Gestion.data.multas.forEach(function(m){ items.push({ fecha:m.fecha, ic:'warn', t:'Acta ' + m.acta + ' · ' + m.motivo, s:Gestion.ciudadanoNombre(m.ciudadanoId) + ' · ' + fmtMoney(m.importe), ref:'multa:' + m.id }); });
+    Gestion.data.tramites.forEach(function(t){ items.push({ fecha:t.fecha, ic:'doc', t:t.numero + ' · ' + t.nombre, s:Gestion.ciudadanoNombre(t.ciudadanoId) + ' · ' + t.estado, ref:'tramite:' + t.id }); });
+    Gestion.data.solicitudes.forEach(function(s){ items.push({ fecha:s.fechaSolicitud, ic:'info', t:s.numero + ' · ' + s.tipo, s:s.ciudadanoNombre + ' · ' + s.estado, ref:'solicitud:' + s.id }); });
+    Gestion.data.extracciones.forEach(function(x){ items.push({ fecha:x.fecha, ic:'locate', t:x.numero + ' · ' + x.dominio, s:x.motivo + ' · ' + x.estado, ref:'extraccion:' + x.id }); });
+    items.sort(function(a, b){ return new Date(b.fecha) - new Date(a.fecha); });
+    $('homeActividad').innerHTML = items.slice(0, 7).map(function(a){
+      return '<div class="act-row" data-act="' + a.ref + '"><span class="act-ic">' + glyph(a.ic, 15) + '</span><span style="flex:1;min-width:0"><div class="act-t">' + esc(a.t) + '</div><div class="act-s">' + esc(a.s) + ' · ' + esc(timeAgo(a.fecha)) + '</div></span></div>';
+    }).join('');
+  }
+};
+
+var MultasView = {
+  q:'', estado:'todas',
+  filtered:function(){
+    var q = this.q.trim().toLowerCase();
+    var self = this;
+    return Gestion.data.multas.filter(function(m){
+      var okEst = self.estado === 'todas' || m.estado === self.estado;
+      var hay = (m.acta + ' ' + m.motivo + ' ' + (m.dominio || '') + ' ' + Gestion.ciudadanoNombre(m.ciudadanoId) + ' ' + (m.ubicacion || '')).toLowerCase();
+      return okEst && (!q || hay.indexOf(q) >= 0);
+    }).sort(function(a, b){ return new Date(b.fecha) - new Date(a.fecha); });
+  },
+  render:function(){
+    var chips = [['todas','Todas'],['pendiente','Pendientes'],['vencida','Vencidas'],['pagada','Pagadas'],['en_descargo','En descargo']];
+    $('mvChips').innerHTML = chips.map(function(c){
+      return '<button type="button" class="gchip' + (MultasView.estado === c[0] ? ' on' : '') + '" data-est="' + c[0] + '">' + c[1] + '</button>';
+    }).join('');
+    this.renderRows();
+  },
+  renderRows:function(){
+    var list = this.filtered();
+    $('multasSub').textContent = list.length + ' de ' + Gestion.data.multas.length + ' multas de demostración.';
+    $('mvCount').textContent = list.length + ' multas';
+    $('mvEmpty').hidden = !!list.length;
+    $('mvTbody').innerHTML = list.map(function(m){
+      return '<tr data-id="' + m.id + '">' +
+        '<td class="num">' + esc(m.acta) + '</td>' +
+        '<td>' + esc(fmtDate(m.fecha)) + '<br><span class="mut">' + esc(timeAgo(m.fecha)) + '</span></td>' +
+        '<td>' + esc(m.motivo) + '</td>' +
+        '<td><span class="pat">' + esc(m.dominio || '—') + '</span></td>' +
+        '<td>' + esc(Gestion.ciudadanoNombre(m.ciudadanoId)) + '</td>' +
+        '<td style="text-align:right" class="num">' + fmtMoney(m.importe) + '</td>' +
+        '<td>' + badgeMultaEstado(m.estado) + '</td>' +
+        '<td><select class="f-select row-sel" data-est-multas="' + m.id + '" style="height:30px;padding:4px 8px">' +
+          MULTA_ESTADOS.map(function(e){ return '<option value="' + e.id + '"' + (e.id === m.estado ? ' selected' : '') + '>' + esc(e.name) + '</option>'; }).join('') +
+        '</select></td></tr>';
+    }).join('');
+  }
+};
+
+var ExtraccionesView = {
+  q:'', estado:'todas',
+  filtered:function(){
+    var q = this.q.trim().toLowerCase();
+    var self = this;
+    return Gestion.data.extracciones.filter(function(x){
+      var okEst = self.estado === 'todas' || x.estado === self.estado;
+      var multa = Gestion.multaById(x.multaId);
+      var hay = (x.numero + ' ' + x.dominio + ' ' + x.motivo + ' ' + x.ubicacion + ' ' + (x.inspector || '') + ' ' + (multa ? multa.acta : '')).toLowerCase();
+      return okEst && (!q || hay.indexOf(q) >= 0);
+    }).sort(function(a, b){ return new Date(b.fecha) - new Date(a.fecha); });
+  },
+  render:function(){
+    var chips = [['todas','Todas'],['En depósito','En depósito'],['Entregado','Entregadas']];
+    $('evChips').innerHTML = chips.map(function(c){
+      return '<button type="button" class="gchip' + (ExtraccionesView.estado === c[0] ? ' on' : '') + '" data-est="' + c[0] + '">' + esc(c[1]) + '</button>';
+    }).join('');
+    this.renderRows();
+  },
+  renderRows:function(){
+    var list = this.filtered();
+    var enDep = Gestion.data.extracciones.filter(function(x){ return x.estado === 'En depósito'; }).length;
+    $('evCount').textContent = list.length + ' extracciones · ' + enDep + ' en depósito';
+    $('evEmpty').hidden = !!list.length;
+    $('evTbody').innerHTML = list.map(function(x){
+      var multa = Gestion.multaById(x.multaId);
+      var actaCell = multa
+        ? '<button class="mini-link" data-acta="' + multa.id + '" title="Ver acta de infracción">' + esc(multa.acta) + '</button>'
+        : '<span class="mut">—</span>';
+      var acc = x.estado === 'En depósito'
+        ? '<button class="btn btn-ghost btn-sm row-sel" data-entregar="' + x.id + '">Marcar entregado</button>'
+        : '<span class="mut">—</span>';
+      return '<tr data-id="' + x.id + '">' +
+        '<td class="num">' + esc(x.numero) + '</td>' +
+        '<td>' + esc(fmtDate(x.fecha)) + '<br><span class="mut">' + esc(timeAgo(x.fecha)) + '</span></td>' +
+        '<td><span class="pat">' + esc(x.dominio) + '</span></td>' +
+        '<td>' + esc(x.tipoVehiculo) + '</td>' +
+        '<td>' + esc(x.motivo) + '</td>' +
+        '<td>' + esc(x.ubicacion) + '</td>' +
+        '<td>' + actaCell + '</td>' +
+        '<td><span class="badge ' + (x.estado === 'Entregado' ? 'b-green' : 'b-amber') + '">' + esc(x.estado) + '</span></td>' +
+        '<td>' + acc + '</td></tr>';
+    }).join('');
+  }
+};
+
+var SolicitudesView = {
+  q:'', estado:'todas',
+  filtered:function(){
+    var q = this.q.trim().toLowerCase();
+    var self = this;
+    return Gestion.data.solicitudes.filter(function(s){
+      var okEst = self.estado === 'todas' || s.estado === self.estado;
+      var hay = (s.numero + ' ' + s.tipo + ' ' + s.direccion + ' ' + (s.ciudadanoNombre || '') + ' ' + (s.observaciones || '')).toLowerCase();
+      return okEst && (!q || hay.indexOf(q) >= 0);
+    }).sort(function(a, b){ return new Date(b.fechaSolicitud) - new Date(a.fechaSolicitud); });
+  },
+  render:function(){
+    var chips = [['todas','Todas']].concat(SOL_ESTADOS.map(function(e){ return [e, e]; }));
+    $('svChips').innerHTML = chips.map(function(c){
+      return '<button type="button" class="gchip' + (SolicitudesView.estado === c[0] ? ' on' : '') + '" data-est="' + esc(c[0]) + '">' + esc(c[1]) + '</button>';
+    }).join('');
+    this.renderRows();
+  },
+  renderRows:function(){
+    var list = this.filtered();
+    $('svCount').textContent = list.length + ' solicitudes';
+    $('svEmpty').hidden = !!list.length;
+    $('svTbody').innerHTML = list.map(function(s){
+      var tone = s.estado === 'Pendiente' ? 'b-amber' : (s.estado === 'Programada' ? 'b-sky' : 'b-green');
+      var acc = s.estado !== 'Finalizada' ? '<button class="btn btn-ghost btn-sm row-sel" data-avanzar-sol="' + s.id + '">Avanzar</button>' : '<span class="mut">—</span>';
+      return '<tr data-id="' + s.id + '">' +
+        '<td class="num">' + esc(s.numero) + '</td>' +
+        '<td>' + esc(fmtDate(s.fechaSolicitud)) + '</td>' +
+        '<td>' + esc(s.tipo) + '</td>' +
+        '<td>' + esc(s.direccion) + '</td>' +
+        '<td>' + esc(s.ciudadanoNombre || 'Ciudadano (demo)') + '</td>' +
+        '<td><span class="badge ' + tone + '">' + esc(s.estado) + '</span></td>' +
+        '<td>' + acc + '</td></tr>';
+    }).join('');
+  }
+};
+
+var TramitesView = {
+  q:'', estado:'todos',
+  filtered:function(){
+    var q = this.q.trim().toLowerCase();
+    var self = this;
+    return Gestion.data.tramites.filter(function(t){
+      var okEst = self.estado === 'todos' || t.estado === self.estado;
+      var hay = (t.numero + ' ' + t.nombre + ' ' + Gestion.ciudadanoNombre(t.ciudadanoId)).toLowerCase();
+      return okEst && (!q || hay.indexOf(q) >= 0);
+    }).sort(function(a, b){ return new Date(b.fecha) - new Date(a.fecha); });
+  },
+  render:function(){
+    var chips = [['todos','Todos']].concat(TRAM_ESTADOS.map(function(e){ return [e, e]; }));
+    $('tvChips').innerHTML = chips.map(function(c){
+      return '<button type="button" class="gchip' + (TramitesView.estado === c[0] ? ' on' : '') + '" data-est="' + esc(c[0]) + '">' + esc(c[1]) + '</button>';
+    }).join('');
+    this.renderRows();
+  },
+  renderRows:function(){
+    var list = this.filtered();
+    var enCurso = Gestion.data.tramites.filter(function(t){ return t.estado !== 'Finalizado'; }).length;
+    $('tvCount').textContent = list.length + ' trámites · ' + enCurso + ' en curso';
+    $('tvEmpty').hidden = !!list.length;
+    $('tvTbody').innerHTML = list.map(function(t){
+      var tone = t.estado === 'Finalizado' ? 'b-green' : (t.estado === 'Recibido' ? 'b-slate' : 'b-sky');
+      var acc = t.estado !== 'Finalizado' ? '<button class="btn btn-ghost btn-sm row-sel" data-avanzar-tram="' + t.id + '">Avanzar</button>' : '<span class="mut">—</span>';
+      return '<tr data-id="' + t.id + '">' +
+        '<td class="num">' + esc(t.numero) + '</td>' +
+        '<td>' + esc(fmtDate(t.fecha)) + '<br><span class="mut">' + esc(timeAgo(t.fecha)) + '</span></td>' +
+        '<td>' + esc(t.nombre) + '</td>' +
+        '<td>' + esc(Gestion.ciudadanoNombre(t.ciudadanoId)) + '</td>' +
+        '<td><span class="badge ' + tone + '">' + esc(t.estado) + '</span></td>' +
+        '<td>' + acc + '</td></tr>';
+    }).join('');
+  }
+};
+
+var CiudadanosView = {
+  q:'', estado:'todos',
+  filtered:function(){
+    var q = this.q.trim().toLowerCase();
+    var self = this;
+    return Gestion.data.ciudadanos.filter(function(c){
+      var okEst = self.estado === 'todos' || c.estado === self.estado;
+      var hay = (c.nombre + ' ' + c.apellido + ' ' + c.dni + ' ' + c.email + ' ' + c.barrio).toLowerCase();
+      return okEst && (!q || hay.indexOf(q) >= 0);
+    }).sort(function(a, b){ return a.apellido.localeCompare(b.apellido, 'es'); });
+  },
+  render:function(){
+    var chips = [['todos','Todos'],['activo','Activos'],['bloqueado','Bloqueados']];
+    $('cvChips').innerHTML = chips.map(function(c){
+      return '<button type="button" class="gchip' + (CiudadanosView.estado === c[0] ? ' on' : '') + '" data-est="' + c[0] + '">' + esc(c[1]) + '</button>';
+    }).join('');
+    this.renderRows();
+  },
+  renderRows:function(){
+    var list = this.filtered();
+    $('cvCount').textContent = list.length + ' de ' + Gestion.data.ciudadanos.length + ' ciudadanos';
+    $('cvEmpty').hidden = !!list.length;
+    $('cvTbody').innerHTML = list.map(function(c){
+      var deuda = Gestion.deudaCiudadano(c.id);
+      return '<tr data-id="' + c.id + '">' +
+        '<td><b>' + esc(c.apellido + ', ' + c.nombre) + '</b><br><span class="mut">' + esc(c.domicilio) + '</span></td>' +
+        '<td class="num">' + esc(c.dni) + '</td>' +
+        '<td>' + esc(c.email) + '</td>' +
+        '<td>' + esc(c.barrio) + '</td>' +
+        '<td style="text-align:right" class="num">' + (deuda ? '<span style="color:var(--red-600)">' + fmtMoney(deuda) + '</span>' : '—') + '</td>' +
+        '<td><span class="badge ' + (c.estado === 'activo' ? 'b-green' : 'b-red') + '">' + (c.estado === 'activo' ? 'Activo' : 'Bloqueado') + '</span></td>' +
+        '<td><button class="btn btn-ghost btn-sm row-sel" data-toggle-ciu="' + c.id + '">' + (c.estado === 'activo' ? 'Bloquear' : 'Reactivar') + '</button></td></tr>';
+    }).join('');
+  }
+};
+
+function openMultaModal(id){
+  var m = Gestion.multaById(id);
+  if(!m){ toast('Multa no encontrada (demo).', 'warn'); return; }
+  var extOrigen = m.origenExtraccion ? '<div class="notice-card amber" style="margin:10px 0">' + glyph('warn', 16) + '<div>Acta generada <b>automáticamente</b> por una extracción de vehículo (demo).</div></div>' : '';
+  var desc = (m.descargos && m.descargos.length)
+    ? '<div class="d-field full"><label>Descargos</label><div>' + m.descargos.map(function(d){ return esc(d.numero + ' · ' + d.estado + ' — ' + d.texto); }).join('<br>') + '</div></div>'
+    : '';
+  openModal('Acta ' + m.acta,
+    '<div class="d-badges">' + badgeMultaEstado(m.estado) + (m.origenExtraccion ? '<span class="badge b-amber">Por extracción</span>' : '') + '<span class="badge b-amber">Dato simulado</span></div>' +
+    extOrigen +
+    '<div class="d-grid">' +
+      '<div class="d-field"><label>Motivo</label><div>' + esc(m.motivo) + '</div></div>' +
+      '<div class="d-field"><label>Fecha</label><div>' + esc(fmtDateTime(m.fecha)) + '</div></div>' +
+      '<div class="d-field"><label>Dominio</label><div><span class="pat">' + esc(m.dominio || '—') + '</span></div></div>' +
+      '<div class="d-field"><label>Ciudadano</label><div>' + esc(Gestion.ciudadanoNombre(m.ciudadanoId)) + '</div></div>' +
+      '<div class="d-field"><label>Ubicación</label><div>' + esc(m.ubicacion || '—') + '</div></div>' +
+      '<div class="d-field"><label>Importe</label><div class="big-money">' + fmtMoney(m.importe) + '</div></div>' +
+      desc +
+    '</div>',
+    [{label:'Cerrar'}]);
+}
+
+function openExtraccionModal(id){
+  var x = Gestion.data.extracciones.filter(function(e){ return e.id === id; })[0];
+  if(!x){ toast('Extracción no encontrada (demo).', 'warn'); return; }
+  var multa = Gestion.multaById(x.multaId);
+  var botones = [{label:'Cerrar'}];
+  if(x.estado === 'En depósito'){
+    botones.unshift({label:'Marcar como entregado', cls:'btn-primary', onClick:function(){
+      confirmModal('Marcar como entregado', 'Se registrará la entrega del vehículo ' + x.dominio + ' desde el depósito municipal (demo). ¿Continuar?', 'Marcar entrega', function(){
+        ActionsG.entregarExtraccion(x.id);
+      });
+    }});
+  }
+  openModal(x.numero + ' · ' + x.dominio,
+    '<div class="d-badges"><span class="badge ' + (x.estado === 'Entregado' ? 'b-green' : 'b-amber') + '">' + esc(x.estado) + '</span><span class="badge b-amber">Dato simulado</span></div>' +
+    '<div class="d-grid">' +
+      '<div class="d-field"><label>Fecha de extracción</label><div>' + esc(fmtDateTime(x.fecha)) + '</div></div>' +
+      '<div class="d-field"><label>Tipo de vehículo</label><div>' + esc(x.tipoVehiculo) + '</div></div>' +
+      '<div class="d-field"><label>Motivo</label><div>' + esc(x.motivo) + '</div></div>' +
+      '<div class="d-field"><label>Ubicación</label><div>' + esc(x.ubicacion) + '</div></div>' +
+      '<div class="d-field"><label>Inspector a cargo</label><div>' + esc(x.inspector || 'Inspector de tránsito (demo)') + '</div></div>' +
+      (x.observaciones ? '<div class="d-field full"><label>Observaciones</label><div>' + esc(x.observaciones) + '</div></div>' : '') +
+      (multa ? '<div class="d-field full"><label>Acta generada automáticamente</label><div>' + esc(multa.acta) + ' · ' + esc(multa.motivo) + ' · ' + fmtMoney(multa.importe) + '</div></div>' : '') +
+    '</div>',
+    botones);
+}
+
+function openSolicitudModal(id){
+  var s = Gestion.data.solicitudes.filter(function(x){ return x.id === id; })[0];
+  if(!s){ toast('Solicitud no encontrada (demo).', 'warn'); return; }
+  var tone = s.estado === 'Pendiente' ? 'b-amber' : (s.estado === 'Programada' ? 'b-sky' : 'b-green');
+  var botones = [{label:'Cerrar'}];
+  if(s.estado !== 'Finalizada'){
+    botones.unshift({label:'Avanzar estado', cls:'btn-primary', onClick:function(){
+      confirmModal('Avanzar estado de la solicitud', 'La solicitud ' + s.numero + ' pasará al siguiente estado dentro de la demo. ¿Continuar?', 'Avanzar', function(){
+        ActionsG.avanzarSolicitud(s.id);
+      });
+    }});
+  }
+  openModal(s.numero,
+    '<div class="d-badges"><span class="badge ' + tone + '">' + esc(s.estado) + '</span><span class="badge b-amber">Dato simulado</span></div>' +
+    '<div class="d-grid">' +
+      '<div class="d-field full"><label>Servicio solicitado</label><div>' + esc(s.tipo) + '</div></div>' +
+      '<div class="d-field"><label>Ciudadano</label><div>' + esc(s.ciudadanoNombre || 'Ciudadano (demo)') + '</div></div>' +
+      '<div class="d-field"><label>Teléfono</label><div>' + esc(s.telefono || '—') + '</div></div>' +
+      '<div class="d-field"><label>Correo</label><div>' + esc(s.ciudadanoEmail || '—') + '</div></div>' +
+      '<div class="d-field"><label>Dirección</label><div>' + esc(s.direccion) + '</div></div>' +
+      '<div class="d-field"><label>Fecha preferida</label><div>' + esc(fmtDate(s.fechaPreferida)) + '</div></div>' +
+      '<div class="d-field"><label>Fecha de solicitud</label><div>' + esc(fmtDateTime(s.fechaSolicitud)) + '</div></div>' +
+      (s.observaciones ? '<div class="d-field full"><label>Observaciones del vecino</label><div>' + esc(s.observaciones) + '</div></div>' : '') +
+    '</div>',
+    botones);
+}
+
+function openTramiteModal(id){
+  var t = Gestion.data.tramites.filter(function(x){ return x.id === id; })[0];
+  if(!t){ toast('Trámite no encontrado (demo).', 'warn'); return; }
+  var tone = t.estado === 'Finalizado' ? 'b-green' : (t.estado === 'Recibido' ? 'b-slate' : 'b-sky');
+  var botones = [{label:'Cerrar'}];
+  if(t.estado !== 'Finalizado'){
+    botones.unshift({label:'Avanzar estado', cls:'btn-primary', onClick:function(){
+      confirmModal('Avanzar estado del trámite', 'El trámite ' + t.numero + ' pasará al siguiente estado dentro de la demo. ¿Continuar?', 'Avanzar', function(){
+        ActionsG.avanzarTramite(t.id);
+      });
+    }});
+  }
+  var hist = (t.historial || []).slice().reverse().map(function(h){
+    return '<li><time>' + esc(fmtDateTime(h.at)) + '</time><p>' + esc(h.text) + '</p></li>';
+  }).join('');
+  openModal(t.numero,
+    '<div class="d-badges"><span class="badge ' + tone + '">' + esc(t.estado) + '</span><span class="badge b-amber">Dato simulado</span></div>' +
+    '<div class="d-grid">' +
+      '<div class="d-field full"><label>Trámite</label><div>' + esc(t.nombre) + '</div></div>' +
+      '<div class="d-field"><label>Ciudadano</label><div>' + esc(Gestion.ciudadanoNombre(t.ciudadanoId)) + '</div></div>' +
+      '<div class="d-field"><label>Fecha de inicio</label><div>' + esc(fmtDateTime(t.fecha)) + '</div></div>' +
+    '</div>' +
+    '<div class="d-sec"><div class="d-title"><span>Historial</span></div><ul class="hist">' + hist + '</ul></div>',
+    botones);
+}
+
+function openCiudadanoModal(id){
+  var c = Gestion.ciudadanoById(id);
+  if(!c){ toast('Ciudadano no encontrado (demo).', 'warn'); return; }
+  var deuda = Gestion.deudaCiudadano(c.id);
+  var bloquear = c.estado === 'activo';
+  var botones = [
+    {label: bloquear ? 'Bloquear cuenta' : 'Reactivar cuenta', cls: bloquear ? 'btn-danger' : 'btn-primary', onClick:function(){
+      confirmModal(bloquear ? 'Bloquear ciudadano' : 'Reactivar ciudadano',
+        'Se ' + (bloquear ? 'bloqueará' : 'reactivará') + ' la cuenta de ' + c.nombre + ' ' + c.apellido + ' dentro de la demo. ¿Continuar?',
+        bloquear ? 'Bloquear' : 'Reactivar', function(){ ActionsG.toggleCiudadano(c.id); }, bloquear);
+    }},
+    {label:'Cerrar'}
+  ];
+  openModal(c.apellido + ', ' + c.nombre,
+    '<div class="d-badges"><span class="badge ' + (c.estado === 'activo' ? 'b-green' : 'b-red') + '">' + (c.estado === 'activo' ? 'Activo' : 'Bloqueado') + '</span><span class="badge b-amber">Dato simulado</span></div>' +
+    '<div class="d-grid">' +
+      '<div class="d-field"><label>DNI</label><div>' + esc(c.dni) + '</div></div>' +
+      '<div class="d-field"><label>Correo</label><div>' + esc(c.email) + '</div></div>' +
+      '<div class="d-field"><label>Teléfono</label><div>' + esc(c.telefono) + '</div></div>' +
+      '<div class="d-field"><label>Domicilio</label><div>' + esc(c.domicilio) + ' · ' + esc(c.barrio) + '</div></div>' +
+      '<div class="d-field"><label>Alta en el padrón</label><div>' + esc(fmtDate(c.alta)) + '</div></div>' +
+      '<div class="d-field"><label>Deuda pendiente</label><div class="big-money" style="color:' + (deuda ? 'var(--red-600)' : '#15803d') + '">' + (deuda ? fmtMoney(deuda) : 'Sin deuda') + '</div></div>' +
+    '</div>' +
+    '<p style="font-size:11.5px;color:var(--ink-400);margin-top:10px">El bloqueo es simulado: se guarda solo en este navegador. En una implementación real sería PATCH /admin/ciudadanos/:id.</p>',
+    botones);
+}
+
+function openNuevaExtraccionModal(){
+  openModal('Registrar extracción de vehículo (demo)',
+    '<p style="font-size:12.5px">Registrá el vehículo retirado con grúa. Al confirmar se genera <b>automáticamente</b> el acta de infracción asociada al motivo.</p>' +
+    '<label class="m-label" for="exDominio">Dominio (patente) *</label>' +
+    '<input class="m-input" id="exDominio" type="text" maxlength="9" placeholder="AB 123 CD o ABC 123" style="text-transform:uppercase">' +
+    '<label class="m-label" for="exTipo">Tipo de vehículo *</label>' +
+    '<select class="m-input" id="exTipo">' + EX_TIPOS.map(function(t){ return '<option>' + esc(t) + '</option>'; }).join('') + '</select>' +
+    '<label class="m-label" for="exMotivo">Motivo de la extracción * (define el importe del acta)</label>' +
+    '<select class="m-input" id="exMotivo">' + EX_MOTIVOS.map(function(m){ return '<option value="' + m.id + '">' + esc(m.nombre) + ' — ' + fmtMoney(m.importe) + '</option>'; }).join('') + '</select>' +
+    '<label class="m-label" for="exUbicacion">Ubicación de la extracción *</label>' +
+    '<input class="m-input" id="exUbicacion" type="text" maxlength="80" placeholder="Ej.: Calle 12 y Calle 5">' +
+    '<label class="m-label" for="exInspector">Inspector a cargo (opcional)</label>' +
+    '<input class="m-input" id="exInspector" type="text" maxlength="60" placeholder="Nombre del inspector (demo)">' +
+    '<label class="m-label" for="exObs">Observaciones (opcional)</label>' +
+    '<input class="m-input" id="exObs" type="text" maxlength="140">',
+    [
+      {label:'Cancelar'},
+      {label:'Registrar y generar multa', cls:'btn-primary', onClick:function(){
+        var dominio = ($('exDominio').value || '').trim().toUpperCase().replace(/\s+/g, ' ');
+        var ubicacion = ($('exUbicacion').value || '').trim();
+        if(!dominio){ toast('Ingresá el dominio del vehículo.', 'warn'); return; }
+        if(!/^[A-Z]{2,3}\s?\d{3}(\s?[A-Z]{2})?$/.test(dominio)){ toast('El dominio no parece válido (ej.: AB 123 CD o ABC 123).', 'warn'); return; }
+        if(ubicacion.length < 5){ toast('Indicá la ubicación de la extracción (mínimo 5 caracteres).', 'warn'); return; }
+        var motivo = exMotivoById($('exMotivo').value);
+        if(!motivo){ toast('Elegí un motivo válido.', 'warn'); return; }
+        confirmModal('Registrar extracción',
+          'Se registrará la extracción del dominio ' + dominio + ' y se generará automáticamente el acta de infracción por ' + fmtMoney(motivo.importe) + ' (demo). ¿Continuar?',
+          'Registrar', function(){
+            var res = ActionsG.registrarExtraccion({
+              dominio:dominio,
+              tipoVehiculo:$('exTipo').value,
+              motivoId:motivo.id,
+              ubicacion:ubicacion,
+              inspector:($('exInspector').value || '').trim(),
+              observaciones:($('exObs').value || '').trim()
+            });
+            if(res){ toast('Extracción ' + res.extraccion.numero + ' registrada. Acta ' + res.multa.acta + ' generada (demo).', 'ok', 5000); }
+            else{ toast('No se pudo registrar la extracción (demo).', 'err'); }
+          });
+      }}
+    ]);
+}
+
+var ActionsG = {
+  registrarExtraccion:function(datos){
+    var motivo = exMotivoById(datos.motivoId);
+    if(!motivo) return null;
+    var titular = null;
+    Gestion.data.multas.forEach(function(m){
+      if(!titular && m.dominio && m.ciudadanoId && String(m.dominio).replace(/\s/g, '').toUpperCase() === String(datos.dominio).replace(/\s/g, '')) titular = m.ciudadanoId;
+    });
+    var ahora = new Date().toISOString();
+    var multa = { id:'gm-' + Date.now().toString(36), acta:Gestion.nextActa(), fecha:ahora, motivo:motivo.motivoMulta, ubicacion:datos.ubicacion, importe:motivo.importe, estado:'pendiente', ciudadanoId:titular, dominio:datos.dominio, descargos:[], origenExtraccion:true };
+    Gestion.data.multas.unshift(multa);
+    var ext = { id:'ge-' + Date.now().toString(36), numero:Gestion.nextExtNumero(), fecha:ahora, dominio:datos.dominio, tipoVehiculo:datos.tipoVehiculo, motivoId:motivo.id, motivo:motivo.nombre, ubicacion:datos.ubicacion, inspector:datos.inspector || 'Inspector de tránsito (demo)', observaciones:datos.observaciones || '', estado:'En depósito', multaId:multa.id };
+    Gestion.data.extracciones.unshift(ext);
+    Gestion.save();
+    refreshGestionView();
+    return { extraccion:ext, multa:multa };
+  },
+  entregarExtraccion:function(id){
+    var x = Gestion.data.extracciones.filter(function(e){ return e.id === id; })[0];
+    if(!x || x.estado !== 'En depósito') return;
+    x.estado = 'Entregado';
+    Gestion.save();
+    refreshGestionView();
+    toast('Vehículo ' + x.dominio + ' marcado como entregado (demo).', 'ok');
+  },
+  setMultaEstado:function(id, est){
+    var m = Gestion.multaById(id);
+    if(!m || m.estado === est) return;
+    m.estado = est;
+    Gestion.save();
+    refreshGestionView();
+    toast('Acta ' + m.acta + ' → ' + multaEstadoById(est).name + ' (demo).', 'ok');
+  },
+  avanzarTramite:function(id){
+    var t = Gestion.data.tramites.filter(function(x){ return x.id === id; })[0];
+    if(!t) return;
+    var idx = TRAM_ESTADOS.indexOf(t.estado);
+    if(idx < 0 || idx >= TRAM_ESTADOS.length - 1) return;
+    var nuevo = TRAM_ESTADOS[idx + 1];
+    t.estado = nuevo;
+    t.historial = t.historial || [];
+    t.historial.push({at:new Date().toISOString(), text:'Estado: ' + TRAM_ESTADOS[idx] + ' → ' + nuevo + '. ' + (TRAM_COMENT[nuevo] || '')});
+    Gestion.save();
+    refreshGestionView();
+    toast(t.numero + ' → ' + nuevo + ' (demo).', 'ok');
+  },
+  avanzarSolicitud:function(id){
+    var s = Gestion.data.solicitudes.filter(function(x){ return x.id === id; })[0];
+    if(!s) return;
+    var idx = SOL_ESTADOS.indexOf(s.estado);
+    if(idx < 0 || idx >= SOL_ESTADOS.length - 1) return;
+    s.estado = SOL_ESTADOS[idx + 1];
+    Gestion.save();
+    refreshGestionView();
+    toast(s.numero + ' → ' + s.estado + ' (demo).', 'ok');
+  },
+  toggleCiudadano:function(id){
+    var c = Gestion.ciudadanoById(id);
+    if(!c) return;
+    c.estado = c.estado === 'activo' ? 'bloqueado' : 'activo';
+    Gestion.save();
+    refreshGestionView();
+    toast('Ciudadano ' + (c.estado === 'bloqueado' ? 'bloqueado' : 'reactivado') + ' (demo).', 'ok');
+  }
+};
+
+Gestion.openDetail = function(ref){
+  var p = String(ref || '').split(':');
+  if(p[0] === 'multa') openMultaModal(p[1]);
+  else if(p[0] === 'tramite') openTramiteModal(p[1]);
+  else if(p[0] === 'solicitud') openSolicitudModal(p[1]);
+  else if(p[0] === 'extraccion') openExtraccionModal(p[1]);
+};
+function refreshGestionView(){
+  if(State.view === 'home') HomeView.render();
+  else if(State.view === 'multas') MultasView.render();
+  else if(State.view === 'extracciones') ExtraccionesView.render();
+  else if(State.view === 'solicitudes') SolicitudesView.render();
+  else if(State.view === 'tramites') TramitesView.render();
+  else if(State.view === 'ciudadanos') CiudadanosView.render();
+}
+
 /* ---------------- Inicialización ---------------- */
 function init(){
   Prefs.load();
   Data.load();
+  Gestion.load();
   buildFilterUI();
   MapMod.init();
   MapMod.buildLegend();
@@ -2558,6 +3526,86 @@ function bindEvents(){
       var b = e.target.closest('[data-int]');
       if(b) openDetail(b.getAttribute('data-int'));
     });
+  });
+
+  /* ---- Módulos de gestión (inicio, multas, extracciones, solicitudes, trámites, ciudadanos) ---- */
+  $('homeQuick').addEventListener('click', function(e){
+    var b = e.target.closest('[data-goto]');
+    if(b) openView(b.getAttribute('data-goto'));
+  });
+  $('homeActividad').addEventListener('click', function(e){
+    var r = e.target.closest('[data-act]');
+    if(r) Gestion.openDetail(r.getAttribute('data-act'));
+  });
+  $('mvSearch').addEventListener('input', debounce(function(){ MultasView.q = this.value; MultasView.renderRows(); }, 200));
+  $('evSearch').addEventListener('input', debounce(function(){ ExtraccionesView.q = this.value; ExtraccionesView.renderRows(); }, 200));
+  $('svSearch').addEventListener('input', debounce(function(){ SolicitudesView.q = this.value; SolicitudesView.renderRows(); }, 200));
+  $('tvSearch').addEventListener('input', debounce(function(){ TramitesView.q = this.value; TramitesView.renderRows(); }, 200));
+  $('cvSearch').addEventListener('input', debounce(function(){ CiudadanosView.q = this.value; CiudadanosView.renderRows(); }, 200));
+  [['mvChips', MultasView], ['evChips', ExtraccionesView], ['svChips', SolicitudesView], ['tvChips', TramitesView], ['cvChips', CiudadanosView]].forEach(function(par){
+    $(par[0]).addEventListener('click', function(e){
+      var chip = e.target.closest('[data-est]');
+      if(!chip) return;
+      par[1].estado = chip.getAttribute('data-est');
+      par[1].render();
+    });
+  });
+  $('btnNuevaExtraccion').addEventListener('click', openNuevaExtraccionModal);
+  $('mvTbody').addEventListener('click', function(e){
+    if(e.target.closest('select')) return;
+    var tr = e.target.closest('tr[data-id]');
+    if(tr) openMultaModal(tr.getAttribute('data-id'));
+  });
+  $('mvTbody').addEventListener('change', function(e){
+    var sel = e.target.closest('[data-est-multas]');
+    if(sel) ActionsG.setMultaEstado(sel.getAttribute('data-est-multas'), sel.value);
+  });
+  $('evTbody').addEventListener('click', function(e){
+    var ent = e.target.closest('[data-entregar]');
+    if(ent){
+      var x = Gestion.data.extracciones.filter(function(z){ return z.id === ent.getAttribute('data-entregar'); })[0];
+      if(x) confirmModal('Marcar como entregado', 'Se registrará la entrega del vehículo ' + x.dominio + ' desde el depósito municipal (demo). ¿Continuar?', 'Marcar entrega', function(){ ActionsG.entregarExtraccion(x.id); });
+      return;
+    }
+    var acta = e.target.closest('[data-acta]');
+    if(acta){ openMultaModal(acta.getAttribute('data-acta')); return; }
+    var tr = e.target.closest('tr[data-id]');
+    if(tr) openExtraccionModal(tr.getAttribute('data-id'));
+  });
+  $('svTbody').addEventListener('click', function(e){
+    var b = e.target.closest('[data-avanzar-sol]');
+    if(b){
+      var s = Gestion.data.solicitudes.filter(function(z){ return z.id === b.getAttribute('data-avanzar-sol'); })[0];
+      if(s) confirmModal('Avanzar estado', 'La solicitud ' + s.numero + ' pasará al siguiente estado dentro de la demo. ¿Continuar?', 'Avanzar', function(){ ActionsG.avanzarSolicitud(s.id); });
+      return;
+    }
+    var tr = e.target.closest('tr[data-id]');
+    if(tr) openSolicitudModal(tr.getAttribute('data-id'));
+  });
+  $('tvTbody').addEventListener('click', function(e){
+    var b = e.target.closest('[data-avanzar-tram]');
+    if(b){
+      var t = Gestion.data.tramites.filter(function(z){ return z.id === b.getAttribute('data-avanzar-tram'); })[0];
+      if(t) confirmModal('Avanzar estado del trámite', 'El trámite ' + t.numero + ' pasará al siguiente estado dentro de la demo. ¿Continuar?', 'Avanzar', function(){ ActionsG.avanzarTramite(t.id); });
+      return;
+    }
+    var tr = e.target.closest('tr[data-id]');
+    if(tr) openTramiteModal(tr.getAttribute('data-id'));
+  });
+  $('cvTbody').addEventListener('click', function(e){
+    var b = e.target.closest('[data-toggle-ciu]');
+    if(b){
+      var c = Gestion.ciudadanoById(b.getAttribute('data-toggle-ciu'));
+      if(c){
+        var bloquear = c.estado === 'activo';
+        confirmModal(bloquear ? 'Bloquear ciudadano' : 'Reactivar ciudadano',
+          'Se ' + (bloquear ? 'bloqueará' : 'reactivará') + ' la cuenta de ' + c.nombre + ' ' + c.apellido + ' dentro de la demo. ¿Continuar?',
+          bloquear ? 'Bloquear' : 'Reactivar', function(){ ActionsG.toggleCiudadano(c.id); }, bloquear);
+      }
+      return;
+    }
+    var tr = e.target.closest('tr[data-id]');
+    if(tr) openCiudadanoModal(tr.getAttribute('data-id'));
   });
 
   /* Drawer y modales */

@@ -35,6 +35,8 @@ body{font-family:var(--font);background:var(--bg);color:var(--ink-900);font-size
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 input,select,textarea{font:inherit;color:inherit}
 img,svg{max-width:100%;display:block}
+/* Iconos de trazo sin color propio: heredan el color del texto */
+svg[fill="none"]:not([stroke]){stroke:currentColor}
 a{color:var(--blue-600)}
 h1,h2,h3,h4{line-height:1.25}
 :focus-visible{outline:2px solid var(--blue-500);outline-offset:2px;border-radius:4px}
@@ -114,7 +116,7 @@ h1,h2,h3,h4{line-height:1.25}
 .b-red{background:#fee2e2;color:#991b1b;border-color:#fecaca}
 .cat-chip{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:3px 9px;border-radius:8px;white-space:nowrap}
 .cat-chip svg{width:13px;height:13px}
-.w-auto{width:auto}
+.w-auto,.f-select.w-auto{width:auto}
 /* ---------- Navegación lateral ---------- */
 .sidebar{position:fixed;top:var(--topbar-h);left:0;bottom:0;width:var(--sidebar-w);z-index:1150;background:var(--card);border-right:1px solid var(--line);display:flex;flex-direction:column;padding:12px 10px;transition:transform .25s}
 .side-nav{display:flex;flex-direction:column;gap:3px}
@@ -352,7 +354,7 @@ h1,h2,h3,h4{line-height:1.25}
 .toast.warn svg{stroke:#fbbf24}
 
 /* ---------- Tabla del listado ---------- */
-.table-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-1);overflow:hidden}
+.table-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-1);overflow:hidden;overflow-x:auto}
 .rep-table{width:100%;border-collapse:collapse;font-size:13px}
 .rep-table th{text-align:left;font-size:10.5px;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-500);padding:11px 12px;border-bottom:1px solid var(--line);background:var(--soft);white-space:nowrap}
 .rep-table td{padding:10px 12px;border-bottom:1px solid #eef2f7;vertical-align:top}
@@ -390,7 +392,7 @@ h1,h2,h3,h4{line-height:1.25}
 .zc-evo svg{width:14px;height:14px}
 .zc-evo.up{color:var(--red-600)}.zc-evo.down{color:var(--green-600)}.zc-evo.flat{color:var(--ink-500)}
 .zc-reason{font-size:12px;color:var(--ink-500);line-height:1.5;background:var(--soft);border-radius:9px;padding:8px 10px;border:1px dashed var(--line)}
-.zc-foot{display:flex;justify-content:flex-end}
+.zc-foot{display:flex;justify-content:flex-end;margin-top:auto}
 
 /* ---------- Estadísticas ---------- */
 .stats-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
@@ -496,19 +498,19 @@ h1,h2,h3,h4{line-height:1.25}
 .gchip{border:1px solid var(--line);background:var(--card);color:var(--ink-700);border-radius:999px;padding:6px 12px;font-size:12px;font-weight:700;cursor:pointer;transition:background .15s,color .15s,border-color .15s}
 .gchip:hover{border-color:var(--blue-600);color:var(--blue-700)}
 .gchip.on{background:var(--blue-600);border-color:var(--blue-600);color:#fff}
-.gcard{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.gcard{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;overflow-x:auto}
 .gtable{width:100%;border-collapse:collapse;font-size:12.5px}
 .gtable th{background:var(--soft);text-align:left;padding:9px 12px;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-400);border-bottom:1px solid var(--line);white-space:nowrap}
 .gtable td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
 .gtable tbody tr:last-child td{border-bottom:0}
 .gtable tbody tr{cursor:pointer;transition:background .12s}
 .gtable tbody tr:hover{background:var(--sky-100)}
-.gtable .num{font-variant-numeric:tabular-nums;font-weight:700;color:var(--ink-900)}
+.gtable .num{font-variant-numeric:tabular-nums;font-weight:700;color:var(--ink-900);white-space:nowrap}
 .gtable .mut{color:var(--ink-400);font-size:11.5px}
 .gtable .row-sel{cursor:pointer}
 .gempty{padding:26px;text-align:center;color:var(--ink-400);font-size:13px}
 .gfoot{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:9px 12px;border-top:1px solid var(--line);font-size:12px;color:var(--ink-400)}
-.pat{display:inline-block;font-weight:800;letter-spacing:.04em;border:1px solid var(--line);border-radius:6px;padding:2px 7px;background:var(--soft);color:var(--ink-900)}
+.pat{display:inline-block;white-space:nowrap;font-weight:800;letter-spacing:.04em;border:1px solid var(--line);border-radius:6px;padding:2px 7px;background:var(--soft);color:var(--ink-900)}
 /* Dashboard inicial */
 .dash{padding:18px 20px 26px;max-width:1180px;margin:0 auto}
 .dash-hi{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px}
@@ -1177,7 +1179,7 @@ var GLYPHS = {
 /* Dibuja un glifo SVG inline */
 function glyph(name, size){
   var p = GLYPHS[name] || GLYPHS.pin;
-  return '<svg viewBox="0 0 24 24" width="' + (size || 16) + '" height="' + (size || 16) + '" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + p + '</svg>';
+  return '<svg viewBox="0 0 24 24" width="' + (size || 16) + '" height="' + (size || 16) + '" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + p + '</svg>';
 }
 
 /* ---------------- Utilidades ---------------- */
@@ -1734,6 +1736,7 @@ function openView(v){
   if(v === 'map'){ MapMod.invalidate(); }
   if(v === 'stats'){ StatsView.render(); }
   if(v === 'zones'){ ZonesView.render(); }
+  if(v === 'interventions'){ IntervView.render(); }
   if(v === 'home'){ HomeView.render(); }
   if(v === 'multas'){ MultasView.render(); }
   if(v === 'extracciones'){ ExtraccionesView.render(); }

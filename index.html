@@ -20,7 +20,7 @@
   --blue-700:#1e40af; --blue-600:#1d4ed8; --blue-500:#2f6fed;
   --sky-600:#0284c7; --sky-500:#0ea5e9; --sky-100:#e0f2fe;
   --amber-500:#f59e0b; --orange-600:#ea580c; --red-600:#dc2626; --green-600:#16a34a;
-  --ink-900:#0f172a; --ink-700:#334155; --ink-500:#64748b; --ink-400:#94a3b8;
+  --ink-900:#0f172a; --ink-700:#334155; --ink-500:#526178; --ink-400:#5f6f86;
   --line:#e2e8f0; --bg:#eef2f7; --card:#fff; --soft:#f8fafc;
   --radius:14px; --radius-sm:10px;
   --shadow-1:0 1px 2px rgba(15,23,42,.05), 0 2px 6px rgba(15,23,42,.07);
@@ -216,7 +216,7 @@ h1,h2,h3,h4{line-height:1.25}
 .map-watermark{position:absolute;right:12px;bottom:16px;z-index:1000;font-size:10px;font-weight:800;letter-spacing:.09em;color:var(--ink-500);background:rgba(255,255,255,.88);border:1px solid var(--line);border-radius:8px;padding:4px 9px;pointer-events:none}
 .filters-fab{display:none;position:absolute;left:12px;bottom:52px;z-index:1000;align-items:center;gap:8px;background:var(--nav-800);color:#fff;border-radius:999px;padding:10px 16px;font-size:13px;font-weight:700;box-shadow:var(--shadow-2)}
 .filters-fab svg{width:16px;height:16px}
-.filters-fab i{font-style:normal;background:var(--sky-500);border-radius:999px;font-size:11px;font-weight:800;padding:1px 7px}
+.filters-fab i{font-style:normal;background:#0369a1;border-radius:999px;font-size:11px;font-weight:800;padding:1px 7px}
 .map-fallback{position:absolute;inset:0;z-index:5;display:flex;align-items:center;justify-content:center;padding:20px}
 /* ---------- Panel de filtros ---------- */
 .filters-panel{width:312px;min-width:312px;background:var(--card);border-left:1px solid var(--line);display:flex;flex-direction:column;min-height:0}
@@ -380,7 +380,7 @@ h1,h2,h3,h4{line-height:1.25}
 .zone-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-2)}
 .zc-head{display:flex;align-items:center;gap:11px}
 .zc-rank{width:34px;height:34px;min-width:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;background:var(--nav-800);color:#fff}
-.zc-rank.r2{background:var(--blue-600)}.zc-rank.r3{background:var(--sky-600)}.zc-rank.r4,.zc-rank.r5,.zc-rank.r6{background:#5b7ba6}
+.zc-rank.r2{background:var(--blue-600)}.zc-rank.r3{background:#0369a1}.zc-rank.r4,.zc-rank.r5,.zc-rank.r6{background:#4f6d96}
 .zc-name{font-size:14px;font-weight:800}
 .zc-tag{display:block;font-size:11px;color:var(--ink-400);font-weight:600}
 .zc-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}
@@ -390,7 +390,7 @@ h1,h2,h3,h4{line-height:1.25}
 .zc-cats{display:flex;flex-wrap:wrap;gap:5px}
 .zc-evo{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700}
 .zc-evo svg{width:14px;height:14px}
-.zc-evo.up{color:var(--red-600)}.zc-evo.down{color:var(--green-600)}.zc-evo.flat{color:var(--ink-500)}
+.zc-evo.up{color:var(--red-600)}.zc-evo.down{color:#15803d}.zc-evo.flat{color:var(--ink-500)}
 .zc-reason{font-size:12px;color:var(--ink-500);line-height:1.5;background:var(--soft);border-radius:9px;padding:8px 10px;border:1px dashed var(--line)}
 .zc-foot{display:flex;justify-content:flex-end;margin-top:auto}
 
@@ -453,6 +453,16 @@ h1,h2,h3,h4{line-height:1.25}
   .rep-table td::before{content:attr(data-label);font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-400);padding-top:2px}
   .rep-table td.no-label::before{display:none}
   .rep-table td.no-label{justify-content:flex-start}
+  .gtable thead{display:none}
+  .gtable,.gtable tbody{display:block}
+  .gtable tbody tr{display:block;padding:6px 4px;border-bottom:1px solid var(--line)}
+  .gtable tbody tr:last-child{border-bottom:0}
+  .gtable td{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:6px 10px;border-bottom:1px dashed #eef2f7;text-align:right!important}
+  .gtable tbody tr td:last-child{border-bottom:0}
+  .gtable td::before{content:attr(data-label);flex:none;font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-400);text-align:left}
+  .gtable td[data-label=""]::before{display:none}
+  .gtable td:first-child{font-size:13.5px}
+  .gtable td .f-select{max-width:160px}
   .desc-cell,.loc-cell{max-width:none}
   .btn-portal span{display:none}
   .btn-portal{width:36px;padding:0}
@@ -1218,9 +1228,9 @@ function sevById(id){ for(var i=0;i<SEVERITIES.length;i++){ if(SEVERITIES[i].id 
 function sourceName(id){ for(var i=0;i<SOURCES.length;i++){ if(SOURCES[i].id === id) return SOURCES[i].name; } return id || '—'; }
 function areaName(id){ for(var i=0;i<AREAS.length;i++){ if(AREAS[i].id === id) return AREAS[i].name; } return id || 'Sin asignar'; }
 function badgeStatus(id){ var s = statusById(id); return '<span class="badge ' + s.tone + '">' + esc(s.name) + '</span>'; }
-function badgePrio(id){ var p = prioById(id); return '<span class="badge" style="background:' + p.color + '1c;color:' + p.color + ';border-color:' + p.color + '55">' + esc(p.name) + '</span>'; }
+function badgePrio(id){ var p = prioById(id); return '<span class="badge" style="background:' + p.color + '1c;color:color-mix(in srgb,' + p.color + ' 62%,#000);border-color:' + p.color + '55">' + esc(p.name) + '</span>'; }
 function badgeSev(id){ var s = sevById(id); return s ? '<span class="badge ' + s.tone + '" title="Gravedad reportada por el ciudadano">' + esc(s.name) + '</span>' : ''; }
-function chipCat(id){ var c = catById(id); return '<span class="cat-chip" style="background:' + c.color + '16;color:' + c.color + '">' + glyph(c.icon, 13) + esc(c.short) + '</span>'; }
+function chipCat(id){ var c = catById(id); return '<span class="cat-chip" style="background:' + c.color + '16;color:color-mix(in srgb,' + c.color + ' 62%,#000)">' + glyph(c.icon, 13) + esc(c.short) + '</span>'; }
 function isPending(r){ return !!PENDING_SET[r.status]; }
 function isClosed(r){ return !!CLOSED_SET[r.status]; }
 function suggestArea(catId){
@@ -3373,6 +3383,18 @@ function refreshGestionView(){
   else if(State.view === 'tramites') TramitesView.render();
   else if(State.view === 'ciudadanos') CiudadanosView.render();
 }
+
+/* Tablas de gestión: cada celda lleva el título de su columna para mostrarse como tarjeta en celular */
+function labelGTable(table){
+  var heads = Array.prototype.map.call(table.querySelectorAll('thead th'), function(th){ return th.textContent.trim(); });
+  table.querySelectorAll('tbody tr').forEach(function(tr){
+    Array.prototype.forEach.call(tr.children, function(td, i){ td.setAttribute('data-label', heads[i] || ''); });
+  });
+}
+document.querySelectorAll('.gtable').forEach(function(table){
+  labelGTable(table);
+  new MutationObserver(function(){ labelGTable(table); }).observe(table.querySelector('tbody'), {childList:true});
+});
 
 /* ---------------- Inicialización ---------------- */
 function init(){

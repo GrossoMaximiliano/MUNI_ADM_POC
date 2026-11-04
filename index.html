@@ -449,14 +449,19 @@ h1,h2,h3,h4{line-height:1.25}
   .rep-table thead{display:none}
   .rep-table,.rep-table tbody{display:block}
   .rep-table tbody tr{display:block;border-bottom:1px solid var(--line);border-radius:0;padding:6px 4px}
+  /* En el celular cada fila es una tarjeta separada: con aire entre una y otra */
+  .rep-table tbody,.gtable tbody{padding:10px;background:#f4f7fb}
+  .rep-table tbody tr,.gtable tbody tr,.gtable tbody tr:last-child{background:#fff;border:1px solid var(--line);border-radius:12px;margin-bottom:10px;box-shadow:0 1px 2px rgba(15,23,42,.05)}
+  .rep-table tbody tr:last-child,.gtable tbody tr:last-child{margin-bottom:0}
+  .rep-table tbody tr:hover,.gtable tbody tr:hover{background:#fff}
+  .rep-table tbody tr td:last-child{border-bottom:0}
   .rep-table td{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;border-bottom:1px dashed #eef2f7;padding:7px 10px}
   .rep-table td::before{content:attr(data-label);font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-400);padding-top:2px}
   .rep-table td.no-label::before{display:none}
   .rep-table td.no-label{justify-content:flex-start}
   .gtable thead{display:none}
   .gtable,.gtable tbody{display:block}
-  .gtable tbody tr{display:block;padding:6px 4px;border-bottom:1px solid var(--line)}
-  .gtable tbody tr:last-child{border-bottom:0}
+  .gtable tbody tr{display:block;padding:6px 4px}
   .gtable td{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:6px 10px;border-bottom:1px dashed #eef2f7;text-align:right!important}
   .gtable tbody tr td:last-child{border-bottom:0}
   .gtable td::before{content:attr(data-label);flex:none;font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-400);text-align:left}
